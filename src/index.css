@@ -3,12 +3,22 @@
 @tailwind utilities;
 
 * {
-  font-family: Verdana;
+  font-family: Roboto, sans-serif;
+  line-height: 30px;
+  font-size: 21px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Nunito, sans-serif;
 }
 
 @media only screen and (min-width: 640px) {
-  :root {
-    --scrollbar-color: #b2b8bb;
+  html {
+    overflow-y: scroll;
   }
 
   ::-webkit-scrollbar {
@@ -16,18 +26,17 @@
   }
 
   ::-webkit-scrollbar-track {
-    background-color: transparent;
+    background-color: light-dark(#eceef2, #1f2937);
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: var(--scrollbar-color);
+    background-color: light-dark(#1f2937, #eceef2);
     border-radius: 20px;
     border: 7px solid transparent;
     background-clip: content-box;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: #697577;
+    background-color: light-dark(#426287, #8690ab);
   }
 }
-

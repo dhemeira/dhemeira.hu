@@ -6,6 +6,8 @@ import { Root } from './routes/root';
 import { About } from './routes/About';
 import { Home } from './routes/Home';
 import { ErrorPage } from './ErrorPage';
+import '@fontsource/nunito';
+import '@fontsource/roboto';
 
 const router = createBrowserRouter([
   {
@@ -35,4 +37,3 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
-
