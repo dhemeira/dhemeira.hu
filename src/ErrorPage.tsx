@@ -13,9 +13,8 @@ export const ErrorPage = () => {
     errorMessage = error;
   } else {
     console.error(error);
-    errorMessage = 'Unknown error';
+    errorMessage = 'Not Found';
   }
-
   return (
     <div className="flex flex-col gap-8 justify-center items-center h-screen">
       <h1 className="text-4xl font-bold">Oops!</h1>

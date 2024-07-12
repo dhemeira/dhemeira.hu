@@ -6,8 +6,7 @@ import { Root } from './routes/root';
 import { About } from './routes/About';
 import { Home } from './routes/Home';
 import { ErrorPage } from './ErrorPage';
-import '@fontsource/nunito';
-import '@fontsource/roboto';
+import '@fontsource/inter';
 
 const router = createBrowserRouter([
   {
@@ -16,17 +15,16 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        errorElement: <ErrorPage />,
-        children: [
-          {
-            index: true,
-            element: <Home />,
-          },
-          {
-            path: '/about',
-            element: <About />,
-          },
-        ],
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: '/about',
+        element: <About />,
+      },
+      {
+        path: '*',
+        element: <ErrorPage />,
       },
     ],
   },
