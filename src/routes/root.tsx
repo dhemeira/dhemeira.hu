@@ -40,7 +40,8 @@ export function Root() {
           'dark:bg-dark-background',
           'text-light-text',
           'dark:text-dark-text',
-          'py-20'
+          'py-24',
+          'bg-top-gradient'
         )}>
         <Outlet />
       </main>

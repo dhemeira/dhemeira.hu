@@ -2,44 +2,20 @@ export function Home() {
   return (
     <>
       <div className="container">
-        <div className="row g-2">
-          <h1 className="text-5xl">Home Page</h1>
-        </div>
         <div className="row">
-          <div className="col text-dark-text bg-dark-background">
-            <p> text-dark-text </p>
-            <p> bg-dark-background</p>
+          <div className="lg:col-1 xl:col-2"></div>
+          <div className="col-12 md:col-8 lg:col-6 xl:col-5 flex flex-col items-start justify-center">
+            <h1 className="text-5xl">Home Page</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis eligendi odio magni
+              numquam maiores maxime praesentium dolor at, explicabo saepe, nobis eaque commodi
+              asperiores odit omnis! Sit totam explicabo exercitationem!
+            </p>
           </div>
-          <div className="col text-dark-background bg-dark-primary">
-            <p> text-dark-background</p>
-            <p> bg-dark-primary</p>
+          <div className="hidden md:flex md:col-4 lg:col-4 xl:col-3 items-center justify-center">
+            <div className="aspect-square w-full bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl"></div>
           </div>
-          <div className="col text-dark-text bg-dark-secondary">
-            <p> text-dark-text</p>
-            <p> bg-dark-secondary</p>
-          </div>
-          <div className="col text-dark-background bg-dark-accent">
-            <p> text-dark-background </p>
-            <p> bg-dark-accent</p>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col text-light-text bg-light-background">
-            <p> text-light-text</p>
-            <p> bg-light-background</p>
-          </div>
-          <div className="col text-light-text bg-light-primary">
-            <p> text-light-text</p>
-            <p> bg-light-primary</p>
-          </div>
-          <div className="col text-light-text bg-light-secondary">
-            <p> text-light-text </p>
-            <p> bg-light-secondary</p>
-          </div>
-          <div className="col text-light-text bg-light-accent">
-            <p> text-light-text</p>
-            <p> bg-light-accent</p>
-          </div>
+          <div className="lg:col-1 xl:col-2"></div>
         </div>
       </div>
     </>

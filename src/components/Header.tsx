@@ -42,7 +42,7 @@ export const Header = ({ changeTheme, theme }: HeaderProps) => {
   }, []);
 
   return (
-    <header className="fixed top-0 w-full bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text border-b-black/20 dark:border-b-white/20 border-b">
+    <header className="fixed top-0 w-full bg-black/75 z-50 text-dark-text border-b-white/20 border-b">
       <div className="flex justify-between px-[7%] py-2 ">
         <p className="font-medium px-2 text-base/8">Logo</p>
         <nav className="flex gap-4 justify-end items-center">
@@ -53,15 +53,15 @@ export const Header = ({ changeTheme, theme }: HeaderProps) => {
               className={({ isActive }) =>
                 `font-medium px-4 text-base/8 ${
                   isActive
-                    ? 'text-light-text dark:text-dark-text border-b-2 border-b-light-accent dark:border-b-dark-accent'
-                    : 'text-light-text/70 dark:text-dark-text/70 hover:text-light-text dark:hover:text-dark-text'
+                    ? 'text-dark-text border-b-2 border-b-light-accent dark:border-b-dark-accent'
+                    : 'text-dark-text/70 hover:text-dark-text'
                 }`
               }>
               {page.name}
             </NavLink>
           ))}
           <button
-            className="w-9 h-9 flex justify-center items-center"
+            className="w-9 h-9 flex justify-center items-center text-dark-text/70 hover:text-dark-text"
             onClick={changeTheme}>
             {theme === 'light' ? (
               <BsSunFill className="w-6 h-6" />
