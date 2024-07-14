@@ -6,7 +6,7 @@ import { Root } from './routes/root';
 import { About } from './routes/About';
 import { Home } from './routes/Home';
 import { ErrorPage } from './ErrorPage';
-import '@fontsource/inter';
+import '@fontsource-variable/inter';
 
 const router = createBrowserRouter([
   {

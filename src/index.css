@@ -2,12 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  font-family: Inter, sans-serif;
-  line-height: 30px;
-  font-size: 18px;
+body {
+  font-family: 'Inter Variable', sans-serif;
 }
-
 @media only screen and (min-width: 640px) {
   html {
     overflow-y: scroll;
@@ -18,17 +15,17 @@
   }
 
   ::-webkit-scrollbar-track {
-    background-color: light-dark(#ffffff, #0f0d13);
+    background-color: light-dark(#d9d6f5, #0d0a29);
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: light-dark(#1d1b20, #e6e0e9);
+    background-color: light-dark(#110f1f, #e2e0f0);
     border-radius: 20px;
     border: 7px solid transparent;
     background-clip: content-box;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: light-dark(#49454f, #cac4d0);
+    background-color: light-dark(#c2750a, #f5a83d);
   }
 }

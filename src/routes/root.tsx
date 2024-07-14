@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
 import { Header } from '../components/Header';
 import { cookieValue } from '../helpers/index';
+import classNames from 'classnames';
 
 const checkForTheme = () => {
   const _themeQuery = window.matchMedia('(prefers-color-scheme: dark)');
@@ -28,8 +29,19 @@ export function Root() {
 
   return (
     <>
-      <Header changeTheme={changeTheme} />
-      <main className="bg-light-surfaceContainerLowest min-h-screen dark:bg-dark-surfaceContainerLowest text-light-onSurface dark:text-dark-onSurface pt-16 pb-8 px-16">
+      <Header
+        changeTheme={changeTheme}
+        theme={theme}
+      />
+      <main
+        className={classNames(
+          'bg-light-background',
+          'min-h-screen',
+          'dark:bg-dark-background',
+          'text-light-text',
+          'dark:text-dark-text',
+          'py-20'
+        )}>
         <Outlet />
       </main>
     </>
