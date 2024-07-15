@@ -1,10 +1,10 @@
 .hero {
-  background-image: url('./hero-img.png');
+  background-image: url('hero-img.png');
   background-size: cover;
 }
 
 .dark .hero {
-  background-image: url('./dark-hero-img.png');
+  background-image: url('dark-hero-img.png');
 }
 
 .scroll-wheel {
