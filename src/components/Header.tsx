@@ -43,7 +43,7 @@ export const Header = ({ changeTheme, theme }: HeaderProps) => {
 
   return (
     <header className="fixed top-0 w-full bg-black/75 z-50 text-dark-text border-b-white/20 border-b">
-      <div className="flex justify-between px-[7%] py-2 ">
+      <div className="flex justify-between px-[10%] py-2">
         <p className="font-medium px-2 text-base/8">Logo</p>
         <nav className="flex gap-4 justify-end items-center">
           {pages.map((page) => (

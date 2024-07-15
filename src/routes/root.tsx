@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Header } from '../components/Header';
 import { cookieValue } from '../helpers/index';
 import classNames from 'classnames';
+import { Footer } from '../components/Footer';
 
 const checkForTheme = () => {
   const _themeQuery = window.matchMedia('(prefers-color-scheme: dark)');
@@ -40,11 +41,13 @@ export function Root() {
           'dark:bg-dark-background',
           'text-light-text',
           'dark:text-dark-text',
-          'py-24',
+          'pt-24',
+          'pb-12',
           'bg-top-gradient'
         )}>
         <Outlet />
       </main>
+      <Footer />
     </>
   );
 }

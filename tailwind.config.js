@@ -15,7 +15,7 @@ export default {
       '2xl': '1.777rem',
       '3xl': '2.369rem',
       '4xl': '3.158rem',
-      '5xl': ['4.210rem', '1.1'],
+      '5xl': ['4.210rem', '1.25'],
     },
     extend: {
       height: {
