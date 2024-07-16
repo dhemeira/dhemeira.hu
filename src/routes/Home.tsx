@@ -1,40 +1,40 @@
 import './Home.css';
+import { ScrollAnim } from '../components/ScrollAnim';
 
 export function Home() {
   return (
     <>
-      <div className="container flex flex-col gap-32">
-        <div className="row mt-8">
+      <div className="container flex flex-col gap-24">
+        <div className="row content-between gap-y-14 mt-8">
           <div className="hidden lg:block lg:col-1"></div>
           <div className="col-12 md:col-8 lg:col-6 xl:col-5 flex flex-col items-start justify-center gap-8">
-            <h1 className="text-3xl sm:text-5xl font-bold tracking-tighter">
+            <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter">
               Péter Lakics
-              <span className="bg-gradient-to-br from-dark-secondary dark:from-dark-primary dark:to-dark-accent to-light-accent text-transparent bg-clip-text inline-block">
-                Front-End
-              </span>
-              Developer
+              <div>
+                <span className="bg-gradient-to-br from-dark-secondary dark:from-dark-primary dark:to-dark-accent to-light-accent text-transparent bg-clip-text inline-block">
+                  Front-End
+                </span>{' '}
+                Developer
+              </div>
             </h1>
             <div className="max-w-[600px] flex flex-col gap-4">
               <div>
-                <p>CS student & front-end developer from Hungary.</p>
                 <p>
-                  Passionate about software development, UI design, and all things tech. I love
-                  creating smooth, user-friendly websites and bringing innovative ideas to life.
+                  CS student & front-end developer from Hungary. Passionate about software
+                  development, UI design, and all things tech. I love creating smooth, user-friendly
+                  websites and bringing innovative ideas to life.
                 </p>
               </div>
             </div>
           </div>
           <div className="hidden xl:block xl:col-1"></div>
           <div className="hidden md:flex col-4 items-center justify-center">
-            <div className="hero aspect-square w-full bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl"></div>
+            <div className="hero-img aspect-square w-full bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl"></div>
           </div>
           <div className="hidden lg:block lg:col-1"></div>
-        </div>
-        <div className="row">
-          <div className="col flex justify-center">
-            <div className="w-6 h-11 rounded-full border-2 border-light-text dark:border-dark-text flex justify-center items-start pt-2">
-              <div className="scroll-wheel w-2 h-2 rounded-full bg-light-text dark:bg-dark-text"></div>
-            </div>
+          <div className="col flex flex-col items-center gap-1">
+            <ScrollAnim />
+            <span className="text-sm">Scroll for more</span>
           </div>
         </div>
 

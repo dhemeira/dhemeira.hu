@@ -1,0 +1,27 @@
+.scroll-wheel {
+  animation: scroll 2.5s infinite;
+  --down: 0.9rem;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  6% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  30% {
+    transform: translateY(var(--down));
+    opacity: 1;
+  }
+  40% {
+    transform: translateY(calc(var(--down) + 0.3rem));
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(calc(var(--down) + 0.3rem));
+    opacity: 0;
+  }
+}

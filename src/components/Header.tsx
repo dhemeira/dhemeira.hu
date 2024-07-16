@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { BsSunFill, BsFillMoonStarsFill } from 'react-icons/bs';
+import { routes } from '../main';
 interface HeaderProps {
   changeTheme: () => void;
   theme: string;
@@ -19,16 +20,13 @@ function ProgressContainer({ children }: ProgressContainerProps) {
 function ProgressBar({ width }: ProgressBarProps) {
   return (
     <div
-      className="h-0.5 bg-light-primary dark:bg-dark-primary"
+      className="h-0.5 bg-light-accent dark:bg-dark-accent"
       style={{ width: `${width}%` }}></div>
   );
 }
 
 export const Header = ({ changeTheme, theme }: HeaderProps) => {
-  const pages = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-  ];
+  const pages = routes.filter((route) => route.id);
   const [progressWidth, setProgressWidth] = useState(0);
   useEffect(() => {
     window.onscroll = () => {
@@ -49,7 +47,7 @@ export const Header = ({ changeTheme, theme }: HeaderProps) => {
           {pages.map((page) => (
             <NavLink
               key={page.path}
-              to={page.path}
+              to={page.path || '/'}
               className={({ isActive }) =>
                 `font-medium px-4 text-base/8 ${
                   isActive
@@ -57,7 +55,7 @@ export const Header = ({ changeTheme, theme }: HeaderProps) => {
                     : 'text-dark-text/70 hover:text-dark-text'
                 }`
               }>
-              {page.name}
+              {page.id}
             </NavLink>
           ))}
           <button
