@@ -7,7 +7,7 @@ export const Uni = () => {
 
   useEffect(() => {
     const fetchDataForPosts = async () => {
-      await fetch('http://localhost:8788/date', {
+      await fetch('/date', {
         method: 'GET',
       })
         .then((response) => {
