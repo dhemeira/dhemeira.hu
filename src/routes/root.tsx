@@ -42,6 +42,7 @@ export function Root() {
           'text-light-text',
           'dark:text-dark-text',
           'pt-24',
+          'md:pt-32',
           'pb-12',
           'bg-top-gradient'
         )}>

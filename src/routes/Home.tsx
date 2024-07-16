@@ -4,8 +4,8 @@ import { ScrollAnim } from '../components/ScrollAnim';
 export function Home() {
   return (
     <>
-      <div className="container flex flex-col gap-24">
-        <div className="row content-between gap-y-14 mt-8">
+      <div className="container flex flex-col gap-8 md:gap-16">
+        <div className="row content-between gap-y-14">
           <div className="hidden lg:block lg:col-1"></div>
           <div className="col-12 md:col-8 lg:col-6 xl:col-5 flex flex-col items-start justify-center gap-8">
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter">

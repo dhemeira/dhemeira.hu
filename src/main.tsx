@@ -3,11 +3,10 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { createBrowserRouter, RouteObject, RouterProvider } from 'react-router-dom';
 import { Root } from './routes/root';
-import { About } from './routes/About';
 import { Home } from './routes/Home';
 import { ErrorPage } from './ErrorPage';
 import '@fontsource-variable/inter';
-import { Test } from './routes/Test';
+import { Uni } from './routes/Uni';
 
 export const routes: RouteObject[] = [
   {
@@ -16,14 +15,9 @@ export const routes: RouteObject[] = [
     id: 'Home',
   },
   {
-    path: '/about',
-    element: <About />,
-    id: 'About',
-  },
-  {
-    path: '/test',
-    element: <Test />,
-    id: 'Test',
+    path: '/uni',
+    element: <Uni />,
+    id: 'University',
   },
   {
     path: '*',
