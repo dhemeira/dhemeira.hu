@@ -19,4 +19,18 @@ export class AcademicCalendar {
 
     return `Week ${week}`;
   };
+
+  static typeOfWeek = (date: string, calendar: AcademicCalendar) => {
+    if (date < calendar.semester_start_date || date > calendar.exam_end_date) return '';
+    return date <= calendar.semester_end_date ? 'of study period' : 'of exam period';
+  };
+
+  static currentWeekStatus = (date: string, calendar: AcademicCalendar) => {
+    if (date < calendar.semester_start_date || date > calendar.exam_end_date) return 'Break';
+
+    if (date <= calendar.semester_end_date)
+      return AcademicCalendar.getCurrentWeek(date, calendar.semester_start_date);
+
+    return AcademicCalendar.getCurrentWeek(date, calendar.exam_start_date);
+  };
 }

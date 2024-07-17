@@ -1,7 +1,7 @@
 import './Home.css';
 import { ScrollAnim } from '../components/ScrollAnim';
 
-export function Home() {
+export const Home = () => {
   return (
     <>
       <div className="container flex flex-col gap-8 md:gap-16">
@@ -17,7 +17,7 @@ export function Home() {
                 Developer
               </div>
             </h1>
-            <div className="max-w-[600px] flex flex-col gap-4">
+            <div className="flex flex-col gap-4">
               <div>
                 <p>
                   CS student & front-end developer from Hungary. Passionate about software
@@ -101,4 +101,4 @@ export function Home() {
       </div>
     </>
   );
-}
+};

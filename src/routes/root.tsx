@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
 import { Header } from '../components/Header';
 import { cookieValue } from '../helpers/index';
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import { Footer } from '../components/Footer';
 
 const checkForTheme = () => {
@@ -12,7 +12,7 @@ const checkForTheme = () => {
   return _theme;
 };
 
-export function Root() {
+export const Root = () => {
   const _theme = checkForTheme();
 
   const changeTheme = () => {
@@ -35,7 +35,7 @@ export function Root() {
         theme={theme}
       />
       <main
-        className={classNames(
+        className={clsx(
           'bg-light-background',
           'min-h-screen',
           'dark:bg-dark-background',
@@ -51,4 +51,4 @@ export function Root() {
       <Footer />
     </>
   );
-}
+};
