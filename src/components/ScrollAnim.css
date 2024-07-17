@@ -1,5 +1,5 @@
 .scroll-wheel {
-  animation: scroll 2.5s infinite;
+  animation: scroll 2.5s infinite cubic-bezier(0.785, 0.135, 0.15, 0.86);
   --down: 0.9rem;
 }
 
