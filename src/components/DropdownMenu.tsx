@@ -14,7 +14,7 @@ export const DropdownMenu = ({ pages, className }: DropdownMenuProps) => {
     <Menu>
       <MenuButton as={Fragment}>
         {({ active }) => (
-          <label
+          <button
             className={clsx(
               'w-8',
               'h-8',
@@ -25,12 +25,11 @@ export const DropdownMenu = ({ pages, className }: DropdownMenuProps) => {
               'gap-1',
               'cursor-pointer',
               className
-            )}
-            htmlFor="hamburger">
+            )}>
             <HamburgerLine className={active ? 'rotate-45 translate-y-2' : ''} />
             <HamburgerLine className={active ? 'rotate-45' : ''} />
             <HamburgerLine className={active ? '-rotate-45 -translate-y-2' : ''} />
-          </label>
+          </button>
         )}
       </MenuButton>
       <MenuItems
