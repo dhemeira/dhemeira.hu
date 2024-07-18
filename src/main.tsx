@@ -7,6 +7,8 @@ import { Home } from './routes/Home';
 import { ErrorPage } from './ErrorPage';
 import '@fontsource-variable/inter';
 import { Uni } from './routes/Uni';
+import { Admin } from './routes/Admin';
+import { Login } from './routes/Login';
 
 export const routes: RouteObject[] = [
   {
@@ -18,6 +20,14 @@ export const routes: RouteObject[] = [
     path: '/uni',
     element: <Uni />,
     id: 'University',
+  },
+  {
+    path: '/admin',
+    element: <Admin />,
+  },
+  {
+    path: '/login',
+    element: <Login />,
   },
   {
     path: '*',

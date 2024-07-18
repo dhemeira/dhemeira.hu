@@ -9,7 +9,7 @@ export const Uni = () => {
   const formattedDate = new Date().toLocaleDateString('hu-Hu');
 
   useEffect(() => {
-    const fetchDataForPosts = async () => {
+    const fetchData = async () => {
       await fetch('/api/date', {
         method: 'GET',
       })
@@ -36,7 +36,7 @@ export const Uni = () => {
 
     const cookie = cookieValue('dates');
     if (cookie) setDates(JSON.parse(cookie));
-    else fetchDataForPosts();
+    else fetchData();
   }, [formattedDate]);
 
   return (
