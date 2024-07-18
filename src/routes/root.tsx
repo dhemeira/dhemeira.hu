@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
 import { Header } from '../components/Header';
-import { cookieValue } from '../helpers/index';
+import { cookieValue } from '../utils/index';
 import { clsx } from 'clsx';
 import { Footer } from '../components/Footer';
 
