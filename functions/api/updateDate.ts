@@ -3,14 +3,14 @@ import { getCookieKeyValue } from '../utils';
 export const onRequest = async (context: {
   request: Request;
   next: () => Promise<Response>;
-  env: { CFP_PASSWORD?: string; data: KVNamespace };
+  env: { CFP_PASSWORD?: string; CFP_USERNAME?: string; data: KVNamespace };
 }): Promise<Response> => {
   const { request, env } = context;
 
   const cookie = request.headers.get('cookie') || '';
-  const cookieKeyValue = await getCookieKeyValue(env.CFP_PASSWORD);
+  const cookieKeyValue = await getCookieKeyValue(env.CFP_USERNAME, env.CFP_PASSWORD);
 
-  if (cookie.includes(cookieKeyValue) || !env.CFP_PASSWORD) {
+  if (cookie.includes(cookieKeyValue) || !env.CFP_PASSWORD || !env.CFP_USERNAME) {
     // Correct hash in cookie, or no password set.
     const formData = await request.formData();
 

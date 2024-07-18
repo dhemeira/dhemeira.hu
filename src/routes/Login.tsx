@@ -4,10 +4,10 @@ export const Login = () => {
   return (
     <article>
       <hgroup>
-        <h2>Please enter your password for this site.</h2>
+        <h2>Please enter your username and password for this site.</h2>
       </hgroup>
       {searchParams.get('error') ? (
-        <p className="error">Incorrect password, please try again.</p>
+        <p className="error">Incorrect username or password, please try again.</p>
       ) : (
         ''
       )}
@@ -15,13 +15,20 @@ export const Login = () => {
         method="post"
         action="/api/login">
         <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          aria-label="Username"
+          required
+          autoFocus
+        />
+        <input
           type="password"
           name="password"
           placeholder="Password"
           aria-label="Password"
           autoComplete="current-password"
           required
-          autoFocus
         />
         <button
           type="submit"

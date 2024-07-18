@@ -3,16 +3,18 @@ import { sha256, getCookieKeyValue } from '../utils';
 
 export async function onRequestPost(context: {
   request: Request;
-  env: { CFP_PASSWORD?: string };
+  env: { CFP_USERNAME?: string; CFP_PASSWORD?: string };
 }): Promise<Response> {
   const { request, env } = context;
   const body = await request.formData();
-  const { password } = Object.fromEntries(body);
+  const { password, username } = Object.fromEntries(body);
   const hashedPassword = await sha256(password.toString());
   const hashedCfpPassword = await sha256(env.CFP_PASSWORD);
+  const hashedUsername = await sha256(username.toString());
+  const hashedCfpUsername = await sha256(env.CFP_USERNAME);
 
-  if (hashedPassword === hashedCfpPassword) {
-    const cookieKeyValue = await getCookieKeyValue(env.CFP_PASSWORD);
+  if (hashedPassword === hashedCfpPassword && hashedUsername === hashedCfpUsername) {
+    const cookieKeyValue = await getCookieKeyValue(env.CFP_USERNAME, env.CFP_PASSWORD);
 
     return new Response('', {
       status: 302,
