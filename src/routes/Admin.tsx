@@ -2,11 +2,12 @@ import { FormEvent, useEffect, useState } from 'react';
 import { cookieValue } from '../utils';
 import { AcademicCalendar } from '../utils/academicCalendar';
 import { clsx } from 'clsx';
+import { useNavigate } from 'react-router-dom';
 
 export const Admin = () => {
   const [dates, setDates] = useState(new AcademicCalendar());
   const formattedDate = new Date().toLocaleDateString('hu-Hu');
-
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       await fetch('/api/date', {
@@ -38,7 +39,7 @@ export const Admin = () => {
     else fetchData();
   }, [formattedDate]);
 
-  const fetchDataPut = async (e: FormEvent) => {
+  const fetchDataPost = async (e: FormEvent) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
 
@@ -53,8 +54,10 @@ export const Admin = () => {
       },
     })
       .then((response) => {
-        if (!response.ok) throw new Error(response.statusText);
-        return response.json();
+        if (response.status == 401) navigate('/login', { replace: true });
+        if (response.headers.get('Content-Type') == 'application/json') return response.json();
+
+        throw new Error(response.statusText);
       })
       .then((data: AcademicCalendar) => {
         setDates(data);
@@ -89,7 +92,7 @@ export const Admin = () => {
       <div className="flex">
         <form
           className="flex flex-col gap-4"
-          onSubmit={fetchDataPut}>
+          onSubmit={fetchDataPost}>
           <div className="flex gap-2 justify-between">
             <label htmlFor="semester_start_date">Semester start date</label>
             <input
@@ -135,6 +138,12 @@ export const Admin = () => {
             />
           </div>
           <button type="submit">Update</button>
+        </form>
+
+        <form
+          method="get"
+          action="/api/logout">
+          <button type="submit">Logout</button>
         </form>
       </div>
     </div>

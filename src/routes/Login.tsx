@@ -1,11 +1,10 @@
 import { useSearchParams } from 'react-router-dom';
 export const Login = () => {
   const [searchParams] = useSearchParams();
+
   return (
     <article>
-      <hgroup>
-        <h2>Please enter your username and password for this site.</h2>
-      </hgroup>
+      <h2>Please enter your username and password for this site.</h2>
       {searchParams.get('error') ? (
         <p className="error">Incorrect username or password, please try again.</p>
       ) : (

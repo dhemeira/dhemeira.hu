@@ -1,10 +1,10 @@
 import { CFP_COOKIE_MAX_AGE } from '../constants';
 import { sha256, getCookieKeyValue } from '../utils';
 
-export async function onRequestPost(context: {
+export const onRequestPost = async (context: {
   request: Request;
   env: { CFP_USERNAME?: string; CFP_PASSWORD?: string };
-}): Promise<Response> {
+}): Promise<Response> => {
   const { request, env } = context;
   const body = await request.formData();
   const { password, username } = Object.fromEntries(body);
@@ -34,4 +34,4 @@ export async function onRequestPost(context: {
       },
     });
   }
-}
+};

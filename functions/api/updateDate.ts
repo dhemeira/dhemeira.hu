@@ -29,10 +29,16 @@ export const onRequest = async (context: {
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        'Content-Type': 'application/json',
       },
     });
   } else {
     // No cookie or incorrect hash in cookie.
-    return new Response('Unauthorized', { status: 401 });
+    return new Response('Unauthorized', {
+      status: 401,
+      headers: {
+        'Cache-Control': 'no-cache',
+      },
+    });
   }
 };

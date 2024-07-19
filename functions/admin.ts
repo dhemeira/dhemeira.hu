@@ -15,8 +15,12 @@ export const onRequest = async (context: {
     return await next();
   } else {
     // No cookie or incorrect hash in cookie. Redirect to login.
-    return Response.redirect(
-      `${new URL(request.url).origin}/login` + (error === '1' ? `?error=1` : '')
-    );
+    return new Response('', {
+      status: 302,
+      headers: {
+        'Cache-Control': 'no-cache',
+        'Location': `/login${error === '1' ? `?error=1` : ''}`,
+      },
+    });
   }
 };
