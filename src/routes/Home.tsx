@@ -9,12 +9,12 @@ export const Home = () => {
           <div className="hidden lg:block lg:col-1"></div>
           <div className="col-12 md:col-8 lg:col-6 xl:col-5 flex flex-col items-start justify-center gap-8">
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter">
-              Péter Lakics
+              dhemeira
               <div>
                 <span className="bg-gradient-to-br from-dark-secondary dark:from-dark-primary dark:to-dark-accent to-light-accent text-transparent bg-clip-text inline-block">
-                  Front-End
+                  front-end
                 </span>{' '}
-                Developer
+                developer
               </div>
             </h1>
             <div className="flex flex-col gap-4">
@@ -39,7 +39,7 @@ export const Home = () => {
         </div>
 
         <div className="row">
-          <div className="col"></div>
+          <div className="col">Work In Progress</div>
         </div>
       </div>
     </>
