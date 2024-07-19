@@ -1,14 +1,20 @@
 import { useEffect, useState } from 'react';
 import { cookieValue } from '../utils';
-import { AcademicCalendar } from '../utils/academicCalendar';
+import { AcademicCalendar, TypeOfWeek } from '../utils/academicCalendar';
 import { Card } from '../components/Card';
 import { clsx } from 'clsx';
 
 export const Uni = () => {
   const [dates, setDates] = useState(new AcademicCalendar());
+  const [type, setType] = useState(TypeOfWeek.Break);
   const formattedDate = new Date().toLocaleDateString('hu-Hu');
 
   useEffect(() => {
+    const setValues = (dates: AcademicCalendar) => {
+      setDates(dates);
+      setType(AcademicCalendar.typeOfWeek(formattedDate, dates));
+    };
+
     const fetchData = async () => {
       await fetch('/api/date', {
         method: 'GET',
@@ -17,7 +23,7 @@ export const Uni = () => {
           return response.json();
         })
         .then((data: AcademicCalendar) => {
-          setDates(data);
+          setValues(data);
 
           const expireDate = new Date(
             formattedDate < data.semester_end_date ? data.semester_end_date : data.exam_end_date
@@ -35,8 +41,9 @@ export const Uni = () => {
     };
 
     const cookie = cookieValue('dates');
-    if (cookie) setDates(JSON.parse(cookie));
-    else fetchData();
+    if (cookie) {
+      setValues(JSON.parse(cookie));
+    } else fetchData();
   }, [formattedDate]);
 
   return (
@@ -56,10 +63,11 @@ export const Uni = () => {
           <>
             <p className="text-sm">{formattedDate}</p>
             <div className="flex flex-col justify-center items-center pb-4 text-light-text dark:text-dark-text">
+              <p className="text-5xl">{AcademicCalendar.weekEmoji(type)}</p>
               <p className="text-4xl font-semibold leading-tight">
-                {AcademicCalendar.currentWeekStatus(formattedDate, dates)}
+                {AcademicCalendar.weekTitle(formattedDate, dates, type)}
               </p>
-              <p className="">{AcademicCalendar.typeOfWeek(formattedDate, dates)}</p>
+              <p className="">{AcademicCalendar.weekType(type)}</p>
             </div>
 
             <div
