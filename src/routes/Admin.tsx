@@ -41,7 +41,8 @@ export const Admin = () => {
 
   const fetchDataPost = async (e: FormEvent) => {
     e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
 
     // @ts-expect-error - The conversion works fine
     const searchParams = new URLSearchParams(formData);
@@ -61,6 +62,10 @@ export const Admin = () => {
       })
       .then((data: AcademicCalendar) => {
         setDates(data);
+
+        form.querySelectorAll('input').forEach((input) => {
+          input.value = '';
+        });
 
         const expireDate = new Date(
           formattedDate < data.semester_end_date ? data.semester_end_date : data.exam_end_date
