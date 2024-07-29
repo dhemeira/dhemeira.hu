@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useMatches } from 'react-router-dom';
 import { BsSunFill, BsFillMoonStarsFill } from 'react-icons/bs';
 import { routes } from '../main';
 import { DropdownMenu } from './DropdownMenu';
@@ -29,6 +29,18 @@ const ProgressBar = ({ width }: ProgressBarProps) => {
 export const Header = ({ changeTheme, theme }: HeaderProps) => {
   const pages = routes.filter((route) => route.id);
   const [progressWidth, setProgressWidth] = useState(0);
+  const matches = useMatches();
+
+  useEffect(() => {
+    if (
+      routes
+        .filter((route) => route.id)
+        .some((route) => route.id === matches[matches.length - 1].id)
+    )
+      document.title = `dhemeira | ${matches[matches.length - 1].id}`;
+    else document.title = 'dhemeira';
+  }, [matches]);
+
   useEffect(() => {
     window.onscroll = () => {
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
