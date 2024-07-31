@@ -32,13 +32,16 @@ export const Header = ({ changeTheme, theme }: HeaderProps) => {
   const matches = useMatches();
 
   useEffect(() => {
-    if (
-      routes
-        .filter((route) => route.id)
-        .some((route) => route.id === matches[matches.length - 1].id)
-    )
-      document.title = `dhemeira | ${matches[matches.length - 1].id}`;
-    else document.title = 'dhemeira';
+    const isRouteWithId: boolean = routes
+      .filter((route) => route.id)
+      .some((route) => route.id === matches[matches.length - 1].id);
+    const isRouteMatchesPath: boolean = routes
+      .filter((route) => route.path)
+      .some((route) => route.path === matches[matches.length - 1].pathname);
+
+    if (isRouteWithId) document.title = `${matches[matches.length - 1].id} | dhemeira`;
+    else if (isRouteMatchesPath) document.title = `dhemeira`;
+    else document.title = '404 | dhemeira';
   }, [matches]);
 
   useEffect(() => {

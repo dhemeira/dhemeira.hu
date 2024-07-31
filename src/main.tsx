@@ -31,7 +31,12 @@ export const routes: RouteObject[] = [
   },
   {
     path: '*',
-    element: <ErrorPage />,
+    element: (
+      <ErrorPage
+        err="Page Not Found"
+        statusCode={404}
+      />
+    ),
   },
 ];
 
