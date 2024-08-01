@@ -1,4 +1,5 @@
 import { BsGithub } from 'react-icons/bs';
+import * as React from 'react';
 export const Footer = () => {
   return (
     <footer className="bg-black w-full px-[5%] md:px-[10%] py-2 flex justify-between items-center text-dark-text border-t-white/20 border-t">

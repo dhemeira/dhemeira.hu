@@ -1,13 +1,14 @@
 import clsx from 'clsx';
-import { NavLink, RouteObject } from 'react-router-dom';
+import * as React from 'react';
 import { HamburgerLine } from './HamburgerLine';
 interface DropdownMenuProps {
-  pages: RouteObject[];
+  pages: { name: string; path: string }[];
   className?: string;
 }
 
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { Fragment } from 'react/jsx-runtime';
+import { Link } from 'gatsby';
 
 export const DropdownMenu = ({ pages, className }: DropdownMenuProps) => {
   return (
@@ -57,17 +58,12 @@ export const DropdownMenu = ({ pages, className }: DropdownMenuProps) => {
         )}>
         {pages.map((page) => (
           <MenuItem key={page.path}>
-            <NavLink
+            <Link
               to={page.path || '/'}
-              className={({ isActive }) =>
-                `p-4 text-base/8 ${
-                  isActive
-                    ? 'text-dark-text font-semibold'
-                    : 'text-dark-text/70 font-medium hover:text-dark-text'
-                }`
-              }>
-              {page.id}
-            </NavLink>
+              activeClassName="text-dark-text font-semibold"
+              className="p-4 text-base/8 text-dark-text/70 font-medium hover:text-dark-text">
+              {page.name}
+            </Link>
           </MenuItem>
         ))}
       </MenuItems>

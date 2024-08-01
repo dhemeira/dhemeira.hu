@@ -1,4 +1,5 @@
 import { clsx } from 'clsx';
+import * as React from 'react';
 
 interface CardProps {
   children: React.ReactNode;
