@@ -48,14 +48,16 @@ const DropdownMenu = ({ pages, className }: DropdownMenuProps) => {
           'flex',
           'flex-col',
           'px-4',
+          'pt-8',
+          'pb-24',
           'mt-[11px]',
           'outline-none',
           'divide-y',
           'backdrop-blur-xl',
           'text-center',
-          'w-full',
-          'h-[calc(100%-50px)]',
-          'justify-center',
+          'h-[calc(100vh-50px)]',
+          'w-screen',
+          'max-w-full',
           className
         )}>
         {pages.map((page) => (
