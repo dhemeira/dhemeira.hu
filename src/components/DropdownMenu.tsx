@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import { Fragment } from 'react/jsx-runtime';
+import { Popover, PopoverButton, PopoverPanel, PopoverBackdrop, Portal } from '@headlessui/react';
 import { Link } from 'gatsby';
 import { HamburgerLine } from './HamburgerLine';
 
@@ -12,31 +11,34 @@ interface DropdownMenuProps {
 
 const DropdownMenu = ({ pages, className }: DropdownMenuProps) => {
   return (
-    <Menu>
-      <MenuButton as={Fragment}>
+    <Popover>
+      <PopoverButton
+        aria-label="Navigation Menu"
+        className={clsx(
+          'w-8',
+          'h-8',
+          'flex',
+          'flex-col',
+          'justify-center',
+          'items-center',
+          'outline-none',
+          'gap-1',
+          className
+        )}>
         {({ active }) => (
-          <button
-            aria-label="Navigation Menu"
-            className={clsx(
-              'w-8',
-              'h-8',
-              'flex',
-              'flex-col',
-              'justify-center',
-              'items-center',
-              'gap-1',
-              'cursor-pointer',
-              className
-            )}>
+          <>
             <HamburgerLine className={active ? 'rotate-45 translate-y-2' : ''} />
             <HamburgerLine className={active ? 'rotate-45' : ''} />
             <HamburgerLine className={active ? '-rotate-45 -translate-y-2' : ''} />
-          </button>
+          </>
         )}
-      </MenuButton>
-      <MenuItems
-        anchor="top end"
+      </PopoverButton>
+      <Portal>
+        <PopoverBackdrop className="fixed inset-0 bg-black/15" />
+      </Portal>
+      <PopoverPanel
         transition
+        anchor="top end"
         className={clsx(
           'origin-top',
           'transition',
@@ -58,17 +60,16 @@ const DropdownMenu = ({ pages, className }: DropdownMenuProps) => {
           'text-center'
         )}>
         {pages.map((page) => (
-          <MenuItem key={page.path}>
-            <Link
-              to={page.path || '/'}
-              activeClassName="text-dark-text font-semibold"
-              className="p-4 text-base/8 text-dark-text/70 font-medium hover:text-dark-text">
-              {page.name}
-            </Link>
-          </MenuItem>
+          <Link
+            key={page.path}
+            to={page.path || '/'}
+            activeClassName="text-dark-text font-semibold"
+            className="p-4 text-base/8 text-dark-text/70 font-medium hover:text-dark-text">
+            {page.name}
+          </Link>
         ))}
-      </MenuItems>
-    </Menu>
+      </PopoverPanel>
+    </Popover>
   );
 };
 
