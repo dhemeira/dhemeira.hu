@@ -1,10 +1,8 @@
-import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { clsx } from 'clsx';
-import { Header } from './Header';
-import { useEffect, useLayoutEffect, useState } from 'react';
-import { cookieValue } from '../utils';
+import Header from './Header';
 import { Footer } from './Footer';
+import React from 'react';
 
 interface LayoutProps {
   children: React.ReactNode;

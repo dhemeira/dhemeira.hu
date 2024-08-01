@@ -32,22 +32,22 @@ export class AcademicCalendar {
   };
 
   static weekType = (type: TypeOfWeek) => {
-    if (type == TypeOfWeek.StudyPeriod) return 'of study period';
-    if (type == TypeOfWeek.ExamPeriod) return 'of exam period';
+    if (type === TypeOfWeek.StudyPeriod) return 'of study period';
+    if (type === TypeOfWeek.ExamPeriod) return 'of exam period';
     return '';
   };
 
   static weekTitle = (date: string, calendar: AcademicCalendar, type: TypeOfWeek) => {
-    if (type == TypeOfWeek.StudyPeriod)
+    if (type === TypeOfWeek.StudyPeriod)
       return AcademicCalendar.getCurrentWeek(date, calendar.semester_start_date);
-    if (type == TypeOfWeek.ExamPeriod)
+    if (type === TypeOfWeek.ExamPeriod)
       return AcademicCalendar.getCurrentWeek(date, calendar.exam_start_date);
     return 'Break';
   };
 
   static weekEmoji = (type: TypeOfWeek) => {
-    if (type == TypeOfWeek.StudyPeriod) return '📖';
-    if (type == TypeOfWeek.ExamPeriod) return '📝';
+    if (type === TypeOfWeek.StudyPeriod) return '📖';
+    if (type === TypeOfWeek.ExamPeriod) return '📝';
     return '🏖️';
   };
 }

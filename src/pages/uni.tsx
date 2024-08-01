@@ -3,7 +3,7 @@ import { cookieValue } from '../utils';
 import { AcademicCalendar, TypeOfWeek } from '../utils/academicCalendar';
 import { Card } from '../components/Card';
 import { clsx } from 'clsx';
-import * as React from 'react';
+import React from 'react';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
 

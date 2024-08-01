@@ -1,11 +1,10 @@
-import * as React from 'react';
-
+import React from 'react';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
 
 const Login = () => {
   let searchParams;
-  if (typeof location !== 'undefined') searchParams = new URLSearchParams(location.search);
+  if (typeof window !== 'undefined') searchParams = new URLSearchParams(window.location.search);
   return (
     <Layout>
       <article>

@@ -1,8 +1,8 @@
-import * as React from 'react';
 import { Link } from 'gatsby';
 import { useEffect, useState } from 'react';
-import { BsSunFill, BsFillMoonStarsFill } from 'react-icons/bs';
-import { DropdownMenu } from './DropdownMenu';
+import React from 'react';
+import { lazy } from 'react';
+const DropdownMenu = lazy(() => import('./DropdownMenu'));
 
 interface HeaderProps {
   siteTitle: string;
@@ -26,7 +26,7 @@ const ProgressBar = ({ width }: ProgressBarProps) => {
   );
 };
 
-export const Header = ({ siteTitle }: HeaderProps) => {
+const Header = ({ siteTitle }: HeaderProps) => {
   const pages = [
     { name: 'Home', path: '/' },
     { name: 'University', path: '/uni' },
@@ -74,3 +74,5 @@ export const Header = ({ siteTitle }: HeaderProps) => {
     </header>
   );
 };
+
+export default Header;

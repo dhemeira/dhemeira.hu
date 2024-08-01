@@ -1,21 +1,22 @@
 import clsx from 'clsx';
-import * as React from 'react';
+import React from 'react';
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
+import { Fragment } from 'react/jsx-runtime';
+import { Link } from 'gatsby';
 import { HamburgerLine } from './HamburgerLine';
+
 interface DropdownMenuProps {
   pages: { name: string; path: string }[];
   className?: string;
 }
 
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import { Fragment } from 'react/jsx-runtime';
-import { Link } from 'gatsby';
-
-export const DropdownMenu = ({ pages, className }: DropdownMenuProps) => {
+const DropdownMenu = ({ pages, className }: DropdownMenuProps) => {
   return (
     <Menu>
       <MenuButton as={Fragment}>
         {({ active }) => (
           <button
+            aria-label="Navigation Menu"
             className={clsx(
               'w-8',
               'h-8',
@@ -70,3 +71,5 @@ export const DropdownMenu = ({ pages, className }: DropdownMenuProps) => {
     </Menu>
   );
 };
+
+export default DropdownMenu;

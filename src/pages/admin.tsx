@@ -3,7 +3,7 @@ import { cookieValue } from '../utils';
 import { AcademicCalendar } from '../utils/academicCalendar';
 import { clsx } from 'clsx';
 import { navigate } from 'gatsby';
-import * as React from 'react';
+import React from 'react';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
 
@@ -57,11 +57,11 @@ const Admin = () => {
       },
     })
       .then((response) => {
-        if (response.status == 401)
+        if (response.status === 401)
           navigate('/login', {
             replace: true,
           });
-        if (response.headers.get('Content-Type') == 'application/json') return response.json();
+        if (response.headers.get('Content-Type') === 'application/json') return response.json();
 
         throw new Error(response.statusText);
       })
