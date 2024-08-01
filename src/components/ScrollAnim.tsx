@@ -1,4 +1,5 @@
 import './ScrollAnim.css';
+import React from 'react';
 
 export const ScrollAnim = () => {
   return (

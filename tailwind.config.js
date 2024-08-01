@@ -1,9 +1,8 @@
 import bsGrid from '@dhemeira/tailwind-bootstrap-grid';
 
 /** @type {import('tailwindcss').Config} */
-export default {
-  darkMode: 'class',
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+module.exports = {
+  content: ['./src/pages/**/*.{js,jsx,ts,tsx}', './src/components/**/*.{js,jsx,ts,tsx}'],
   corePlugins: {
     container: false,
   },
@@ -45,5 +44,5 @@ export default {
       },
     },
   },
-  plugins: [bsGrid],
+  plugins: ['gatsby-plugin-postcss', bsGrid],
 };

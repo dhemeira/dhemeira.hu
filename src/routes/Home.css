@@ -1,8 +1,0 @@
-.hero-img {
-  background-image: url('/light-hero-img.png');
-  background-size: cover;
-}
-
-.dark .hero-img {
-  background-image: url('/dark-hero-img.png');
-}

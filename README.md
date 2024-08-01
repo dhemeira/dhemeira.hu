@@ -1,6 +1,6 @@
 # dhemeira.hu
 
-My personal website
+My personal website built with React, Gatsby and Tailwind.
 
 ## Used sources
 

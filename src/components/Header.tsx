@@ -1,11 +1,11 @@
+import { Link } from 'gatsby';
 import { useEffect, useState } from 'react';
-import { NavLink, useMatches } from 'react-router-dom';
-import { BsSunFill, BsFillMoonStarsFill } from 'react-icons/bs';
-import { routes } from '../main';
-import { DropdownMenu } from './DropdownMenu';
+import React from 'react';
+import { lazy } from 'react';
+const DropdownMenu = lazy(() => import('./DropdownMenu'));
+
 interface HeaderProps {
-  changeTheme: () => void;
-  theme: string;
+  siteTitle: string;
 }
 interface ProgressContainerProps {
   children: React.ReactNode;
@@ -26,23 +26,12 @@ const ProgressBar = ({ width }: ProgressBarProps) => {
   );
 };
 
-export const Header = ({ changeTheme, theme }: HeaderProps) => {
-  const pages = routes.filter((route) => route.id);
+const Header = ({ siteTitle }: HeaderProps) => {
+  const pages = [
+    { name: 'Home', path: '/' },
+    { name: 'University', path: '/uni' },
+  ] as { name: string; path: string }[];
   const [progressWidth, setProgressWidth] = useState(0);
-  const matches = useMatches();
-
-  useEffect(() => {
-    const isRouteWithId: boolean = routes
-      .filter((route) => route.id)
-      .some((route) => route.id === matches[matches.length - 1].id);
-    const isRouteMatchesPath: boolean = routes
-      .filter((route) => route.path)
-      .some((route) => route.path === matches[matches.length - 1].pathname);
-
-    if (isRouteWithId) document.title = `${matches[matches.length - 1].id} | dhemeira`;
-    else if (isRouteMatchesPath) document.title = `dhemeira`;
-    else document.title = '404 | dhemeira';
-  }, [matches]);
 
   useEffect(() => {
     window.onscroll = () => {
@@ -58,35 +47,21 @@ export const Header = ({ changeTheme, theme }: HeaderProps) => {
   return (
     <header className="fixed top-0 w-full bg-black/75 z-50 backdrop-blur-xl text-dark-text border-b-white/20 border-b">
       <div className="flex justify-between px-[5%] md:px-[10%] py-2">
-        <NavLink
-          className="font-medium px-2 text-base/8"
-          to="/">
-          dhemeira
-        </NavLink>
+        <Link
+          to="/"
+          className="font-medium px-2 text-base/8">
+          {siteTitle}
+        </Link>
         <nav className="flex gap-4 justify-end items-center">
           {pages.map((page) => (
-            <NavLink
+            <Link
+              activeClassName="text-dark-text border-b-2 border-b-light-accent dark:border-b-dark-accent"
               key={page.path}
               to={page.path || '/'}
-              className={({ isActive }) =>
-                `font-medium px-4 text-base/8 hidden sm:block ${
-                  isActive
-                    ? 'text-dark-text border-b-2 border-b-light-accent dark:border-b-dark-accent'
-                    : 'text-dark-text/70 hover:text-dark-text'
-                }`
-              }>
-              {page.id}
-            </NavLink>
+              className="font-medium px-4 text-base/8 hidden sm:block text-dark-text/70 hover:text-dark-text">
+              {page.name}
+            </Link>
           ))}
-          <button
-            className="w-9 h-9 flex justify-center items-center text-dark-text/70 hover:text-dark-text"
-            onClick={changeTheme}>
-            {theme === 'light' ? (
-              <BsSunFill className="w-6 h-6" />
-            ) : (
-              <BsFillMoonStarsFill className="w-6 h-6" />
-            )}
-          </button>
           <DropdownMenu
             className="block sm:hidden"
             pages={pages}
@@ -99,3 +74,5 @@ export const Header = ({ changeTheme, theme }: HeaderProps) => {
     </header>
   );
 };
+
+export default Header;
