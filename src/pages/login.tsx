@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
 import PrimaryButton from '../components/PrimaryButton';
 
 const Login = () => {
-  let searchParams;
-  if (typeof window !== 'undefined') searchParams = new URLSearchParams(window.location.search);
+  const [searchParams, setSearchParams] = useState<URLSearchParams | null>(null);
+  useEffect(() => {
+    setSearchParams(new URLSearchParams(window.location.search));
+  }, []);
   return (
     <Layout>
       <article>
         <h2>Please enter your username and password for this site.</h2>
-        {searchParams?.get('error') ? (
-          <p className="error">Incorrect username or password, please try again.</p>
-        ) : (
-          ''
-        )}
+        <Suspense>
+          {searchParams?.get('error') ? (
+            <p className="error">Incorrect username or password, please try again.</p>
+          ) : (
+            ''
+          )}
+        </Suspense>
         <form
           method="post"
           action="/api/login">

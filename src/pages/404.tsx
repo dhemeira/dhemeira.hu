@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
 import clsx from 'clsx';
-import { useLocation } from '@reach/router';
+import { useLocation, WindowLocation } from '@reach/router';
 import PrimaryButton from '../components/PrimaryButton';
 import { Link } from 'gatsby';
 
 const NotFoundPage = () => {
-  const location = useLocation();
+  const [location, setLocation] = useState<WindowLocation | null>(null);
+  const loc = useLocation();
+  useEffect(() => {
+    setLocation(loc);
+  }, [loc]);
   return (
     <Layout>
       <div
@@ -26,7 +30,11 @@ const NotFoundPage = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col">{`The following page doesn't exists: ${location.pathname}`}</div>
+          <div className="col">
+            <Suspense>
+              {location ? `The following page doesn't exists: ${location.pathname}` : ''}
+            </Suspense>
+          </div>
         </div>
         <div className="row">
           <div className="col">Check out the home page to find what you are looking for</div>
