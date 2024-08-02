@@ -13,7 +13,7 @@ const IndexPage = () => (
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter">
             dhemeira
             <div>
-              <span className="bg-gradient-to-br from-dark-secondary dark:from-dark-primary dark:to-dark-accent to-light-accent text-transparent bg-clip-text inline-block">
+              {' '}<span className="bg-gradient-to-br from-dark-secondary dark:from-dark-primary dark:to-dark-accent to-light-accent text-transparent bg-clip-text inline-block">
                 front-end
               </span>{' '}
               developer

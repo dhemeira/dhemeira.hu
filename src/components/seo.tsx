@@ -40,7 +40,7 @@ function Seo({ description, title, children }: SeoProps) {
       />
       <meta
         property="og:title"
-        content={title}
+        content={defaultTitle ? `${title} | ${defaultTitle}` : title}
       />
       <meta
         property="og:description"
@@ -60,7 +60,7 @@ function Seo({ description, title, children }: SeoProps) {
       />
       <meta
         name="twitter:title"
-        content={title}
+        content={defaultTitle ? `${title} | ${defaultTitle}` : title}
       />
       <meta
         name="twitter:description"

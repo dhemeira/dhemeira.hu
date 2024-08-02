@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import React from 'react';
 import { lazy } from 'react';
 const DropdownMenu = lazy(() => import('./DropdownMenu'));
@@ -62,10 +62,12 @@ const Header = ({ siteTitle }: HeaderProps) => {
               {page.name}
             </Link>
           ))}
-          <DropdownMenu
-            className="block sm:hidden"
-            pages={pages}
-          />
+          <Suspense>
+            <DropdownMenu
+              className="block sm:hidden"
+              pages={pages}
+            />
+          </Suspense>
         </nav>
       </div>
       <ProgressContainer>
