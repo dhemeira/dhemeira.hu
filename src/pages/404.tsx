@@ -4,6 +4,7 @@ import Seo from '../components/seo';
 import clsx from 'clsx';
 import { useLocation } from '@reach/router';
 import PrimaryButton from '../components/PrimaryButton';
+import { Link } from 'gatsby';
 
 const NotFoundPage = () => {
   const location = useLocation();
@@ -32,7 +33,11 @@ const NotFoundPage = () => {
         </div>
         <div className="row">
           <div className="col">
-            <PrimaryButton>Back to home</PrimaryButton>
+            <PrimaryButton
+              as={Link}
+              to="/">
+              Back to home
+            </PrimaryButton>
           </div>
         </div>
       </div>

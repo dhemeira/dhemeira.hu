@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
+import PrimaryButton from '../components/PrimaryButton';
 
 const Login = () => {
   let searchParams;
@@ -33,11 +34,11 @@ const Login = () => {
             autoComplete="current-password"
             required
           />
-          <button
-            type="submit"
-            className="contrast">
+          <PrimaryButton
+            as="button"
+            type="submit">
             Login
-          </button>
+          </PrimaryButton>
         </form>
       </article>
     </Layout>

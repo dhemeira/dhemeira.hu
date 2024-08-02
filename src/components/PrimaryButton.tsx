@@ -1,32 +1,30 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import clsx from 'clsx';
+import { Button } from '@headlessui/react';
+import { ButtonOrLinkProps } from './PrimaryButton.d';
 
-interface PrimaryButtonProps {
-  children: React.ReactNode;
-}
-
-const PrimaryButton = ({ children }: PrimaryButtonProps) => {
+const PrimaryButton = ({ children, as, className, ...props }: ButtonOrLinkProps) => {
+  const classList = [
+    'bg-light-primary',
+    'dark:bg-dark-primary',
+    'px-8',
+    'py-2',
+    'text-light-text',
+    'rounded-lg',
+    'text-base/9',
+    'inline-block',
+    'group',
+    'relative',
+    'overflow-hidden',
+    'font-semibold',
+  ].join(' ');
   return (
-    <Link
-      className={clsx(
-        'bg-light-primary',
-        'dark:bg-dark-primary',
-        'px-8',
-        'py-2',
-        'text-light-text',
-        'rounded-lg',
-        'text-base/9',
-        'inline-block',
-        'group',
-        'relative',
-        'overflow-hidden',
-        'font-semibold'
-      )}
-      to="/">
+    <Button
+      as={as}
+      {...props}
+      className={classList + className}>
       {children}
-      <div className="group-hover:bg-light-text/15 absolute inset-0" />
-    </Link>
+      <div className="group-hover:bg-light-text/10 absolute inset-0 pointer-events-none" />
+    </Button>
   );
 };
 
