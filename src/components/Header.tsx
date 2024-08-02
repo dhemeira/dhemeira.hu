@@ -55,10 +55,13 @@ const Header = ({ siteTitle }: HeaderProps) => {
         <nav className="flex gap-4 justify-end items-center">
           {pages.map((page) => (
             <Link
-              activeClassName="text-dark-text border-b-2 border-b-light-accent dark:border-b-dark-accent"
+              getProps={({ isCurrent }) => {
+                return {
+                  className: `font-medium px-4 text-base/8 hidden sm:block ${isCurrent ? 'text-dark-text border-b-2 border-b-light-accent dark:border-b-dark-accent' : 'text-dark-text/70 hover:text-dark-text'}`,
+                };
+              }}
               key={page.path}
-              to={page.path || '/'}
-              className="font-medium px-4 text-base/8 hidden sm:block text-dark-text/70 hover:text-dark-text">
+              to={page.path || '/'}>
               {page.name}
             </Link>
           ))}

@@ -63,9 +63,12 @@ const DropdownMenu = ({ pages, className }: DropdownMenuProps) => {
         {pages.map((page) => (
           <MenuItem key={page.path}>
             <Link
-              to={page.path || '/'}
-              activeClassName="text-dark-text font-semibold"
-              className="p-4 text-base/8 text-dark-text/70 font-medium hover:text-dark-text">
+              getProps={({ isCurrent }) => {
+                return {
+                  className: `p-4 text-base/8 ${isCurrent ? 'text-dark-text font-semibold' : 'text-dark-text/70 font-medium hover:text-dark-text'}`,
+                };
+              }}
+              to={page.path || '/'}>
               {page.name}
             </Link>
           </MenuItem>
