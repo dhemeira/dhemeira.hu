@@ -44,6 +44,11 @@ const Login = () => {
   );
 };
 
-export const Head = () => <Seo title="Login" />;
+export const Head = () => (
+  <Seo
+    title="Login"
+    index="noindex, nofollow"
+  />
+);
 
 export default Login;

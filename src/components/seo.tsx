@@ -12,9 +12,10 @@ interface SeoProps {
   description?: string;
   title: string;
   children?: React.ReactNode;
+  index?: string;
 }
 
-function Seo({ description, title, children }: SeoProps) {
+function Seo({ description, title, children, index }: SeoProps) {
   const { site } = useStaticQuery(graphql`
     query {
       site {
@@ -22,6 +23,7 @@ function Seo({ description, title, children }: SeoProps) {
           title
           description
           author
+          siteUrl
         }
       }
     }
@@ -39,6 +41,13 @@ function Seo({ description, title, children }: SeoProps) {
         content={metaDescription}
       />
       <meta
+        name="author"
+        content={site.siteMetadata?.author || ``}
+      />
+      <meta
+        name="application-name"
+        content={defaultTitle}></meta>
+      <meta
         property="og:title"
         content={defaultTitle ? `${title} | ${defaultTitle}` : title}
       />
@@ -51,20 +60,32 @@ function Seo({ description, title, children }: SeoProps) {
         content="website"
       />
       <meta
-        name="twitter:card"
-        content="summary"
+        property="og:locale"
+        content="en_US"
       />
       <meta
-        name="twitter:creator"
-        content={site.siteMetadata?.author || ``}
+        property="og:site_name"
+        content={defaultTitle}
       />
       <meta
-        name="twitter:title"
-        content={defaultTitle ? `${title} | ${defaultTitle}` : title}
+        property="og:image"
+        content={`${site.siteMetadata?.siteUrl}/dark-hero-img.png`}
       />
       <meta
-        name="twitter:description"
-        content={metaDescription}
+        property="og:image:secure_url"
+        content={`${site.siteMetadata?.siteUrl}/dark-hero-img.png`}
+      />
+      <meta
+        property="og:url"
+        content={`${site.siteMetadata?.siteUrl}`}
+      />
+      <meta
+        property="og:image:alt"
+        content={`${defaultTitle} logo`}
+      />
+      <meta
+        name="robots"
+        content={index || 'index, follow'}
       />
       {children}
     </>

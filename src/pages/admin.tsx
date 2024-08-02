@@ -162,6 +162,11 @@ const Admin = () => {
   );
 };
 
-export const Head = () => <Seo title="Admin Panel" />;
+export const Head = () => (
+  <Seo
+    title="Admin Panel"
+    index="noindex, nofollow"
+  />
+);
 
 export default Admin;
