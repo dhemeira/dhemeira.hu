@@ -3,6 +3,7 @@ import React from 'react';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
 import './Home.css';
+import { ScrollContainer } from '../components/ScrollContainer';
 
 const IndexPage = () => (
   <Layout>
@@ -13,7 +14,8 @@ const IndexPage = () => (
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter">
             dhemeira
             <div>
-              {' '}<span className="bg-gradient-to-br from-dark-secondary dark:from-dark-primary dark:to-dark-accent to-light-accent text-transparent bg-clip-text inline-block">
+              {' '}
+              <span className="bg-gradient-to-br from-dark-secondary dark:from-dark-primary dark:to-dark-accent to-light-accent text-transparent bg-clip-text inline-block">
                 front-end
               </span>{' '}
               developer
@@ -39,19 +41,16 @@ const IndexPage = () => (
           <span className="text-sm">Scroll for more</span>
         </div>
       </div>
-
       <div className="row">
-        <div className="col">Work In Progress</div>
+        <div className="col overflow-x-hidden flex flex-row blur-edges">
+          <ScrollContainer />
+          <ScrollContainer />
+        </div>
       </div>
     </div>
   </Layout>
 );
 
-/**
- * Head export to define metadata for the page
- *
- * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
- */
 export const Head = () => <Seo title="Home" />;
 
 export default IndexPage;

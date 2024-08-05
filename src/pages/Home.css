@@ -8,3 +8,34 @@
     background-image: url('/dark-hero-img.png');
   }
 }
+
+.sidescroller {
+  animation: sideScroll 90s linear infinite;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion) {
+  .sidescroller {
+    animation: sideScroll 180s linear infinite;
+  }
+}
+
+@keyframes sideScroll {
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.blur-edges {
+  --mask: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0) 5%,
+      rgba(0, 0, 0, 1) 10%,
+      rgba(0, 0, 0, 1) 90%,
+      rgba(0, 0, 0, 0) 95%
+    )
+    repeat-y;
+
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+}

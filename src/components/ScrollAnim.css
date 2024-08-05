@@ -3,6 +3,12 @@
   --down: 0.9rem;
 }
 
+@media (prefers-reduced-motion) {
+  .scroll-wheel {
+    animation: scroll 5s infinite cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  }
+}
+
 @keyframes scroll {
   0% {
     transform: translateY(0);
