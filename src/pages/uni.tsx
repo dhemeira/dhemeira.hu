@@ -63,7 +63,7 @@ const Uni = () => {
         )}>
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter">University</h1>
         <div className="flex">
-          <Card>
+          <Card className="text-center flex flex-col justify-between items-center gap-2 px-10 md:px-14 py-4">
             <>
               <p className="text-sm">{formattedDate}</p>
               <div className="flex flex-col justify-center items-center pb-4 text-light-text dark:text-dark-text">

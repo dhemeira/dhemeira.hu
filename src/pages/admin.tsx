@@ -6,6 +6,11 @@ import { navigate } from 'gatsby';
 import React from 'react';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
+import { Fieldset } from '@headlessui/react';
+import { Card } from '../components/Card';
+import { InputField } from '../components/InputField';
+import PrimaryButton from '../components/PrimaryButton';
+import SecondaryButton from '../components/SecondaryButton';
 
 const Admin = () => {
   const [dates, setDates] = useState(new AcademicCalendar());
@@ -100,63 +105,56 @@ const Admin = () => {
           'items-center'
         )}>
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter">Admin Panel</h1>
-        <div className="flex">
-          <form
-            className="flex flex-col gap-4"
-            onSubmit={fetchDataPost}>
-            <div className="flex gap-2 justify-between">
-              <label htmlFor="semester_start_date">Semester start date</label>
-              <input
-                type="text"
-                pattern="[0-9]{4}. [0-9]{2}. [0-9]{2}."
-                placeholder={dates.semester_start_date}
-                name="semester_start_date"
-                id="semester_start_date"
-                aria-label="Semester start date"
-              />
-            </div>
-            <div className="flex gap-2 justify-between">
-              <label htmlFor="semester_end_date">Semester end date</label>
-              <input
-                type="text"
-                pattern="[0-9]{4}. [0-9]{2}. [0-9]{2}."
-                placeholder={dates.semester_end_date}
-                name="semester_end_date"
-                id="semester_end_date"
-                aria-label="Semester end date"
-              />
-            </div>
-            <div className="flex gap-2 justify-between">
-              <label htmlFor="exam_start_date">Exam start date</label>
-              <input
-                type="text"
-                pattern="[0-9]{4}. [0-9]{2}. [0-9]{2}."
-                placeholder={dates.exam_start_date}
-                name="exam_start_date"
-                id="exam_start_date"
-                aria-label="Exam start date"
-              />
-            </div>
-            <div className="flex gap-2 justify-between">
-              <label htmlFor="exam_end_date">Exam end date</label>
-              <input
-                type="text"
-                pattern="[0-9]{4}. [0-9]{2}. [0-9]{2}."
-                placeholder={dates.exam_end_date}
-                name="exam_end_date"
-                id="exam_end_date"
-                aria-label="Exam end date"
-              />
-            </div>
-            <button type="submit">Update</button>
-          </form>
 
-          <form
-            method="get"
-            action="/api/logout">
-            <button type="submit">Logout</button>
-          </form>
-        </div>
+        <Card className="p-8 sm:p-10">
+          <Fieldset className="w-screen max-w-[min(24rem,calc(100vw-6rem))] space-y-2 rounded-xl flex flex-col">
+            <form
+              className="flex flex-col space-y-6"
+              method="post"
+              onSubmit={fetchDataPost}>
+              <InputField
+                label="Semester start date"
+                pattern="[0-9]{4}. [0-9]{2}. [0-9]{2}."
+                name="semester_start_date"
+                placeholder={dates.semester_start_date}
+              />
+              <InputField
+                label="Semester end date"
+                pattern="[0-9]{4}. [0-9]{2}. [0-9]{2}."
+                name="semester_end_date"
+                placeholder={dates.semester_end_date}
+              />
+              <InputField
+                label="Exam start date"
+                pattern="[0-9]{4}. [0-9]{2}. [0-9]{2}."
+                name="exam_start_date"
+                placeholder={dates.exam_start_date}
+              />
+              <InputField
+                label="Exam end date"
+                pattern="[0-9]{4}. [0-9]{2}. [0-9]{2}."
+                name="exam_end_date"
+                placeholder={dates.exam_end_date}
+              />
+              <p>Use the following format: YYYY. MM. DD.</p>
+              <PrimaryButton
+                as="button"
+                type="submit">
+                Update
+              </PrimaryButton>
+            </form>
+            <form
+              className="flex flex-col"
+              method="get"
+              action="/api/logout">
+              <SecondaryButton
+                as="button"
+                type="submit">
+                Log Out
+              </SecondaryButton>
+            </form>
+          </Fieldset>
+        </Card>
       </div>
     </Layout>
   );
