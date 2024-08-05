@@ -31,7 +31,6 @@ export const InputField = ({
       <Input
         type={type || 'text'}
         name={name}
-        id={id}
         pattern={pattern}
         placeholder={placeholder}
         aria-label={label}

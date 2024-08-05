@@ -34,7 +34,7 @@ const Admin = () => {
 
           document.cookie = `dates=${JSON.stringify(
             data
-          )};expires=${expireDate.toUTCString()};sameSite=Lax`;
+          )};expires=${expireDate.toUTCString()};sameSite=Lax;path=/admin`;
         })
         .catch(() => {
           console.error('Date fetch failed');
@@ -85,7 +85,7 @@ const Admin = () => {
 
         document.cookie = `dates=${JSON.stringify(
           data
-        )};expires=${expireDate.toUTCString()};sameSite=Lax`;
+        )};expires=${expireDate.toUTCString()};sameSite=Lax;path=/admin`;
       })
       .catch((error) => {
         console.error(error);
