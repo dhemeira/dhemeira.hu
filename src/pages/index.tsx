@@ -11,7 +11,7 @@ const IndexPage = () => (
       <div className="row content-between gap-y-14">
         <div className="hidden lg:block lg:col-1"></div>
         <div className="col-12 md:col-8 lg:col-6 xl:col-5 flex flex-col items-start justify-center gap-8">
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter">
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter text-center md:text-left">
             dhemeira
             <div>
               {' '}
@@ -23,7 +23,7 @@ const IndexPage = () => (
           </h1>
           <div className="flex flex-col gap-4">
             <div>
-              <p>
+              <p className="text-balance">
                 CS student & front-end developer from Hungary. Passionate about software
                 development, UI design, and all things tech. I love creating smooth, user-friendly
                 websites and bringing innovative ideas to life.

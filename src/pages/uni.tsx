@@ -6,6 +6,7 @@ import { clsx } from 'clsx';
 import React from 'react';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
+import { DateSkeleton } from '../components/DateSkeleton';
 
 const Uni = () => {
   const [dates, setDates] = useState(new AcademicCalendar());
@@ -44,9 +45,8 @@ const Uni = () => {
     };
 
     const cookie = cookieValue('dates');
-    if (cookie) {
-      setValues(JSON.parse(cookie));
-    } else fetchData();
+    if (cookie) setValues(JSON.parse(cookie));
+    else fetchData();
   }, [formattedDate]);
 
   return (
@@ -74,14 +74,18 @@ const Uni = () => {
                 )}>
                 <p className="inline-flex flex-col justify-center items-center">
                   <span className="text-sm">Study period</span>
-                  <span>
-                    {dates.semester_start_date} - {dates.semester_end_date}
+                  <span className="inline-flex flex-row gap-1 justify-center items-center">
+                    {dates.semester_start_date || <DateSkeleton />}
+                    <span>-</span>
+                    {dates.semester_end_date || <DateSkeleton />}
                   </span>
                 </p>
                 <p className="inline-flex flex-col justify-center items-center gap-x-1">
                   <span className="text-sm">Exam period</span>
-                  <span>
-                    {dates.exam_start_date} - {dates.exam_end_date}
+                  <span className="inline-flex flex-row gap-1 justify-center items-center">
+                    {dates.exam_start_date || <DateSkeleton />}
+                    <span>-</span>
+                    {dates.exam_end_date || <DateSkeleton />}
                   </span>
                 </p>
               </div>

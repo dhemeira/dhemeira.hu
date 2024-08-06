@@ -12,8 +12,15 @@
   .bg-top-gradient {
     background-image: linear-gradient(0deg, rgba(13, 10, 41, 1) 50%, rgba(0, 0, 0, 1) 120%);
   }
+}
+:root {
+  color-scheme: light dark;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion) {
   :root {
-    color-scheme: light dark;
+    scroll-behavior: auto;
   }
 }
 
