@@ -21,21 +21,16 @@ const Layout = ({ children }: LayoutProps) => {
   `);
 
   return (
-    <>
+    <div className="min-h-screen flex flex-col bg-light-background dark:bg-dark-background bg-top-gradient">
       <SkipToMain />
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <main
         id="main"
-        className={clsx(
-          'bg-light-background bg-top-gradient dark:bg-dark-background',
-          'min-h-screen',
-          'text-light-text dark:text-dark-text',
-          'pt-24 md:pt-32 pb-12'
-        )}>
+        className={clsx('text-light-text dark:text-dark-text', 'pt-24 md:pt-32 pb-12 flex-1')}>
         {children}
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 

@@ -55,7 +55,7 @@ const Uni = () => {
         className={clsx('container gap-8 md:gap-16', 'flex flex-col justify-center items-center')}>
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter">University</h1>
         <div className="flex">
-          <Card className="text-center flex flex-col justify-between items-center gap-2 px-10 md:px-14 py-4">
+          <Card className="text-center flex flex-col justify-between items-center gap-2 px-10 md:px-14 pt-4 pb-6">
             <>
               <p className="text-sm">{formattedDate}</p>
               <div className="flex flex-col justify-center items-center pb-4 text-light-text dark:text-dark-text">

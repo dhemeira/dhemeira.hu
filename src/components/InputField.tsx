@@ -35,8 +35,8 @@ export const InputField = ({
         required={required}
         autoFocus={autoFocus}
         className={clsx(
-          'mt-3 block w-full rounded-lg border-none bg-white/80 py-1.5 px-3 placeholder:text-light-text/70 text-light-text',
-          'focus:outline-none focus:outline-2 focus:-outline-offset-2 focus:outline-light-text dark:focus:outline-dark-text',
+          'mt-3 block w-full rounded-lg border-none bg-white/70 py-1.5 px-3 placeholder:text-light-text/70 text-light-text',
+          'focus:outline-none focus:ring focus:ring-light-text dark:focus:ring-dark-text',
           className
         )}
       />
