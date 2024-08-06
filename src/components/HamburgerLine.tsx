@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import React from 'react';
 
 interface HamburgerLineProps {
@@ -6,9 +5,5 @@ interface HamburgerLineProps {
 }
 
 export const HamburgerLine = ({ className }: HamburgerLineProps) => {
-  return (
-    <div
-      className={clsx('w-8', 'bg-dark-text', 'h-1', 'rounded', 'transition-transform', className)}
-    />
-  );
+  return <div className={`w-8 h-1 bg-dark-text rounded transition-transform ${className}`} />;
 };

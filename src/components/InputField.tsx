@@ -10,7 +10,6 @@ interface InputFieldProps {
   autoFocus?: boolean;
   className?: string;
   required?: boolean;
-  id?: string;
   pattern?: string;
 }
 
@@ -22,7 +21,6 @@ export const InputField = ({
   placeholder,
   autoFocus,
   className,
-  id = name,
   pattern,
 }: InputFieldProps) => {
   return (

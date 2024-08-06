@@ -95,15 +95,7 @@ const Admin = () => {
   return (
     <Layout>
       <div
-        className={clsx(
-          'container',
-          'flex',
-          'flex-col',
-          'gap-8',
-          'md:gap-16',
-          'justify-center',
-          'items-center'
-        )}>
+        className={clsx('container gap-8 md:gap-16', 'flex flex-col justify-center items-center')}>
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter">Admin Panel</h1>
 
         <Card className="p-8 sm:p-10">

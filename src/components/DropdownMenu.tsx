@@ -14,16 +14,7 @@ const DropdownMenu = ({ pages, className }: DropdownMenuProps) => {
     <Menu>
       <MenuButton
         aria-label="Navigation Menu"
-        className={clsx(
-          'w-8',
-          'h-8',
-          'flex',
-          'flex-col',
-          'justify-center',
-          'items-center',
-          'gap-1',
-          className
-        )}>
+        className={clsx('w-8 h-8', 'flex flex-col justify-center items-center gap-1', className)}>
         {({ active }) => (
           <>
             <HamburgerLine className={active ? 'rotate-45 translate-y-2' : ''} />
@@ -36,28 +27,14 @@ const DropdownMenu = ({ pages, className }: DropdownMenuProps) => {
         anchor="top"
         transition
         className={clsx(
-          'origin-top',
-          'transition',
-          'duration-200',
-          'ease-out',
-          'data-[closed]:scale-75',
-          'data-[closed]:opacity-0',
-          'bg-black/75',
-          'shadow',
-          'z-50',
-          'flex',
-          'flex-col',
-          'px-4',
-          'pt-8',
-          'pb-24',
-          'mt-[11px]',
-          'outline-none',
-          'divide-y',
-          'backdrop-blur-xl',
-          'text-center',
-          'h-[calc(100vh-50px)]',
-          'w-screen',
-          'max-w-full',
+          'origin-top z-50',
+          'transition duration-200 ease-out',
+          'data-[closed]:scale-75 data-[closed]:opacity-0',
+          'bg-black/75 shadow backdrop-blur-xl divide-y',
+          'flex flex-col',
+          'pt-8 pb-24 px-4 mt-[11px]',
+          'outline-none text-center',
+          'w-screen max-w-full h-[calc(100vh-50px)]',
           className
         )}>
         {pages.map((page) => (

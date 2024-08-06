@@ -52,15 +52,7 @@ const Uni = () => {
   return (
     <Layout>
       <div
-        className={clsx(
-          'container',
-          'flex',
-          'flex-col',
-          'gap-8',
-          'md:gap-16',
-          'justify-center',
-          'items-center'
-        )}>
+        className={clsx('container gap-8 md:gap-16', 'flex flex-col justify-center items-center')}>
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter">University</h1>
         <div className="flex">
           <Card className="text-center flex flex-col justify-between items-center gap-2 px-10 md:px-14 py-4">
@@ -76,13 +68,8 @@ const Uni = () => {
 
               <div
                 className={clsx(
-                  'flex flex-col',
-                  'justify-center',
-                  'items-center',
-                  'gap-4',
-                  'border-t',
-                  'border-t-light-text/20',
-                  'dark:border-t-dark-text/20',
+                  'flex flex-col justify-center items-center gap-4',
+                  'border-t border-t-light-text/20 dark:border-t-dark-text/20',
                   'pt-4'
                 )}>
                 <p className="inline-flex flex-col justify-center items-center">

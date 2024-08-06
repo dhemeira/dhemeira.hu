@@ -16,13 +16,8 @@ const NotFoundPage = () => {
     <Layout>
       <div
         className={clsx(
-          'container',
-          'flex',
-          'flex-col',
-          'gap-8',
-          'justify-center',
-          'items-center',
-          'text-center'
+          'container text-center',
+          'flex flex-col justify-center items-center gap-8'
         )}>
         <div className="row">
           <div className="col">
