@@ -42,11 +42,12 @@ const IndexPage = () => (
         </div>
       </div>
       <div className="row">
-        <div className="col overflow-x-hidden flex flex-row blur-edges">
-          <ScrollContainer />
-          <ScrollContainer />
-        </div>
+        <div className="col"></div>
       </div>
+    </div>
+    <div className="overflow-x-hidden flex flex-row blur-edges">
+      <ScrollContainer />
+      <ScrollContainer />
     </div>
   </Layout>
 );

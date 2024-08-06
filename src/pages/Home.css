@@ -27,15 +27,22 @@
 }
 
 .blur-edges {
+  --blur: 5%;
   --mask: linear-gradient(
       90deg,
       rgba(0, 0, 0, 0) 5%,
-      rgba(0, 0, 0, 1) 10%,
-      rgba(0, 0, 0, 1) 90%,
+      rgba(0, 0, 0, 1) calc(5% + var(--blur)),
+      rgba(0, 0, 0, 1) calc(95% - var(--blur)),
       rgba(0, 0, 0, 0) 95%
     )
     repeat-y;
 
   -webkit-mask: var(--mask);
   mask: var(--mask);
+}
+
+@media (min-width: 576px) {
+  .blur-edges {
+    --blur: 2.5%;
+  }
 }
