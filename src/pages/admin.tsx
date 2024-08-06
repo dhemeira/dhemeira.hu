@@ -98,7 +98,7 @@ const Admin = () => {
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter">Admin Panel</h1>
 
         <Card className="p-8 pb-10 sm:p-10 sm:pb-12">
-          <Fieldset className="w-screen max-w-[min(24rem,calc(100vw-6rem))] space-y-2 rounded-xl flex flex-col">
+          <Fieldset className="w-screen max-w-[min(24rem,calc(100vw-6rem))] space-y-3 rounded-xl flex flex-col">
             <form
               className="flex flex-col space-y-6"
               method="post"
