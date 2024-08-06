@@ -42,7 +42,9 @@ const IndexPage = () => (
         </div>
       </div>
       <div className="row">
-        <div className="col"></div>
+        <div className="col">
+          <h2 className="text-2xl mb-4 text-center">Languages and Tools</h2>
+        </div>
       </div>
     </div>
     <div className="overflow-x-hidden flex flex-row blur-edges">
