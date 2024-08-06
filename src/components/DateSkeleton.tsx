@@ -2,10 +2,10 @@ import React from 'react';
 
 export const DateSkeleton = () => {
   return (
-    <div
+    <span
       role="status"
       aria-label="Loading..."
-      className="h-2.5 inline-block animate-pulse bg-gray-200 rounded-full dark:bg-gray-700 w-[6.5306rem]"
+      className="h-3 inline-block animate-pulse bg-gray-200 rounded-full dark:bg-gray-700 w-[6.5306rem]"
     />
   );
 };

@@ -74,15 +74,17 @@ const Uni = () => {
                 )}>
                 <p className="inline-flex flex-col justify-center items-center">
                   <span className="text-sm">Study period</span>
-                  <span>
-                    {dates.semester_start_date || <DateSkeleton />} -{' '}
+                  <span className="inline-flex flex-row gap-1 justify-center items-center">
+                    {dates.semester_start_date || <DateSkeleton />}
+                    <span>-</span>
                     {dates.semester_end_date || <DateSkeleton />}
                   </span>
                 </p>
                 <p className="inline-flex flex-col justify-center items-center gap-x-1">
                   <span className="text-sm">Exam period</span>
-                  <span>
-                    {dates.exam_start_date || <DateSkeleton />} -{' '}
+                  <span className="inline-flex flex-row gap-1 justify-center items-center">
+                    {dates.exam_start_date || <DateSkeleton />}
+                    <span>-</span>
                     {dates.exam_end_date || <DateSkeleton />}
                   </span>
                 </p>
