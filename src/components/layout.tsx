@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from 'gatsby';
 import { clsx } from 'clsx';
-import Header from './Header';
+import { Header } from './Header';
 import { Footer } from './Footer';
 import React from 'react';
 import { SkipToMain } from './SkipToMain';

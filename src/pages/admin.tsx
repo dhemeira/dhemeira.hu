@@ -9,8 +9,7 @@ import Seo from '../components/seo';
 import { Fieldset } from '@headlessui/react';
 import { Card } from '../components/Card';
 import { InputField } from '../components/InputField';
-import PrimaryButton from '../components/PrimaryButton';
-import SecondaryButton from '../components/SecondaryButton';
+import { StyledButton } from '../components/StyledButton';
 
 const Admin = () => {
   const [dates, setDates] = useState(new AcademicCalendar());
@@ -129,21 +128,22 @@ const Admin = () => {
                 placeholder={dates.exam_end_date}
               />
               <p>Use the following format: YYYY. MM. DD.</p>
-              <PrimaryButton
+              <StyledButton
                 as="button"
                 type="submit">
                 Update
-              </PrimaryButton>
+              </StyledButton>
             </form>
             <form
               className="flex flex-col"
               method="get"
               action="/api/logout">
-              <SecondaryButton
+              <StyledButton
+                variant="secondary"
                 as="button"
                 type="submit">
                 Log Out
-              </SecondaryButton>
+              </StyledButton>
             </form>
           </Fieldset>
         </Card>

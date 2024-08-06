@@ -26,7 +26,7 @@ const ProgressBar = ({ width }: ProgressBarProps) => {
   );
 };
 
-const Header = ({ siteTitle }: HeaderProps) => {
+export const Header = ({ siteTitle }: HeaderProps) => {
   const pages = [
     { name: 'Home', path: '/' },
     { name: 'University', path: '/uni' },
@@ -79,5 +79,3 @@ const Header = ({ siteTitle }: HeaderProps) => {
     </header>
   );
 };
-
-export default Header;

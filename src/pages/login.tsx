@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
-import PrimaryButton from '../components/PrimaryButton';
+import { StyledButton } from '../components/StyledButton';
 import { Fieldset } from '@headlessui/react';
 import clsx from 'clsx';
 import { Card } from '../components/Card';
@@ -46,11 +46,11 @@ const Login = () => {
                   ''
                 )}
               </Suspense>
-              <PrimaryButton
+              <StyledButton
                 as="button"
                 type="submit">
                 Login
-              </PrimaryButton>
+              </StyledButton>
             </Fieldset>
           </form>
         </Card>

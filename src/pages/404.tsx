@@ -3,7 +3,7 @@ import Layout from '../components/layout';
 import Seo from '../components/seo';
 import clsx from 'clsx';
 import { useLocation, WindowLocation } from '@reach/router';
-import PrimaryButton from '../components/PrimaryButton';
+import { StyledButton } from '../components/StyledButton';
 import { Link } from 'gatsby';
 
 const NotFoundPage = () => {
@@ -36,11 +36,11 @@ const NotFoundPage = () => {
         </div>
         <div className="row">
           <div className="col">
-            <PrimaryButton
+            <StyledButton
               as={Link}
               to="/">
               Back to home
-            </PrimaryButton>
+            </StyledButton>
           </div>
         </div>
       </div>
