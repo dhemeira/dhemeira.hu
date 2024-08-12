@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 import { cookieValue } from '../utils';
 import { AcademicCalendar, TypeOfWeek } from '../utils/academicCalendar';
 import { Card } from '../components/Card';
@@ -13,8 +13,8 @@ const Uni = () => {
   const [type, setType] = useState(TypeOfWeek.Break);
   const formattedDate = useMemo(() => new Date().toLocaleDateString('hu-Hu'), []);
 
-  useEffect(() => {
-    const setValues = (data: AcademicCalendar) => {
+  const setValues = useCallback(
+    (data: AcademicCalendar) => {
       setDates(data);
       setType(AcademicCalendar.typeOfWeek(formattedDate, data));
 
@@ -27,22 +27,25 @@ const Uni = () => {
       document.cookie = `dates=${JSON.stringify(
         data
       )};expires=${expireDate.toUTCString()};sameSite=Lax`;
-    };
+    },
+    [formattedDate]
+  );
 
-    const fetchData = async () => {
-      try {
-        const response = await fetch('/api/date', { method: 'GET' });
-        const data: AcademicCalendar = await response.json();
-        setValues(data);
-      } catch (error) {
-        console.error('Date fetch failed', error);
-      }
-    };
+  const fetchData = useCallback(async () => {
+    try {
+      const response = await fetch('/api/date', { method: 'GET' });
+      const data: AcademicCalendar = await response.json();
+      setValues(data);
+    } catch (error) {
+      console.error('Date fetch failed', error);
+    }
+  }, [setValues]);
 
+  useEffect(() => {
     const cookie = cookieValue('dates');
     if (cookie) setValues(JSON.parse(cookie));
     else fetchData();
-  }, [formattedDate]);
+  }, [fetchData, setValues]);
 
   return (
     <Layout>

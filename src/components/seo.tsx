@@ -1,11 +1,4 @@
-/**
- * SEO component that queries for data with
- * Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.com/docs/how-to/querying-data/use-static-query/
- */
-
-import React from 'react';
+import React, { memo, useMemo } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
 interface SeoProps {
@@ -15,22 +8,27 @@ interface SeoProps {
   index?: string;
 }
 
-function Seo({ description, title, children, index }: SeoProps) {
-  const { site } = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-          description
-          author
-          siteUrl
-        }
+const seoQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+        description
+        author
+        siteUrl
       }
     }
-  `);
+  }
+`;
 
-  const metaDescription = description || site.siteMetadata.description;
-  const defaultTitle = site.siteMetadata?.title;
+const Seo = memo(({ description, title, children, index }: SeoProps) => {
+  const { site } = useStaticQuery(seoQuery);
+
+  const metaDescription = useMemo(
+    () => description || site.siteMetadata.description,
+    [description, site.siteMetadata.description]
+  );
+  const defaultTitle = useMemo(() => site.siteMetadata?.title, [site.siteMetadata?.title]);
 
   return (
     <>
@@ -90,6 +88,6 @@ function Seo({ description, title, children, index }: SeoProps) {
       {children}
     </>
   );
-}
+});
 
 export default Seo;

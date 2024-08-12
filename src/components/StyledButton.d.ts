@@ -1,25 +1,23 @@
 import { ElementType } from 'react';
 import { Link } from 'gatsby';
 
-interface ButtonProps {
+type BaseProps = {
   children: React.ReactNode;
   as?: ElementType;
   className?: string;
-  type?: 'button' | 'submit' | 'reset';
-  to?: string;
   variant?: 'primary' | 'secondary';
-}
+};
 
-type ButtonType = ButtonProps & {
-  as: 'button'; // Specify the condition for 'as' being 'button'
-  type: 'button' | 'submit' | 'reset'; // Make 'type' required
+type ButtonProps = BaseProps & {
+  as: 'button';
+  type: 'button' | 'submit' | 'reset';
   to?: never;
 };
 
-type LinkType = ButtonProps & {
+type LinkProps = BaseProps & {
   as: typeof Link;
   to: string;
   type?: never;
 };
 
-export type ButtonOrLinkProps = ButtonType | LinkType;
+export type ButtonOrLinkProps = ButtonProps | LinkProps;

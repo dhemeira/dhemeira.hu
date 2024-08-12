@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { AcademicCalendar, TypeOfWeek } from '../utils/academicCalendar';
 import { clsx } from 'clsx';
 
@@ -8,7 +8,20 @@ interface UniCardContentProps {
   dates: AcademicCalendar;
 }
 
-export const UniCardContent = ({ formattedDate, type, dates }: UniCardContentProps) => {
+const DateRange = memo(
+  ({ label, startDate, endDate }: { label: string; startDate: string; endDate: string }) => (
+    <p className="inline-flex flex-col justify-center items-center">
+      <span className="text-sm">{label}</span>
+      <span className="inline-flex flex-row gap-1 justify-center items-center">
+        {startDate}
+        <span>-</span>
+        {endDate}
+      </span>
+    </p>
+  )
+);
+
+export const UniCardContent = memo(({ formattedDate, type, dates }: UniCardContentProps) => {
   return (
     <>
       <p className="text-sm">{formattedDate}</p>
@@ -26,23 +39,17 @@ export const UniCardContent = ({ formattedDate, type, dates }: UniCardContentPro
           'border-t border-t-light-text/20 dark:border-t-dark-text/20',
           'pt-4'
         )}>
-        <p className="inline-flex flex-col justify-center items-center">
-          <span className="text-sm">Study period</span>
-          <span className="inline-flex flex-row gap-1 justify-center items-center">
-            {dates.semester_start_date}
-            <span>-</span>
-            {dates.semester_end_date}
-          </span>
-        </p>
-        <p className="inline-flex flex-col justify-center items-center gap-x-1">
-          <span className="text-sm">Exam period</span>
-          <span className="inline-flex flex-row gap-1 justify-center items-center">
-            {dates.exam_start_date}
-            <span>-</span>
-            {dates.exam_end_date}
-          </span>
-        </p>
+        <DateRange
+          label="Study period"
+          startDate={dates.semester_start_date}
+          endDate={dates.semester_end_date}
+        />
+        <DateRange
+          label="Exam period"
+          startDate={dates.exam_start_date}
+          endDate={dates.exam_end_date}
+        />
       </div>
     </>
   );
-};
+});

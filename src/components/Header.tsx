@@ -1,7 +1,8 @@
 import { Link } from 'gatsby';
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useState, useCallback } from 'react';
 import React from 'react';
 import { lazy } from 'react';
+
 const DropdownMenu = lazy(() => import('./DropdownMenu'));
 
 interface HeaderProps {
@@ -14,35 +15,41 @@ interface ProgressBarProps {
   width: number;
 }
 
-const ProgressContainer = ({ children }: ProgressContainerProps) => {
+const ProgressContainer = React.memo(({ children }: ProgressContainerProps) => {
   return <div className="w-full translate-y-px">{children}</div>;
-};
+});
 
-const ProgressBar = ({ width }: ProgressBarProps) => {
+const ProgressBar = React.memo(({ width }: ProgressBarProps) => {
   return (
     <div
       className="h-0.5 bg-light-accent dark:bg-dark-accent"
       style={{ width: `${width}%` }}></div>
   );
-};
+});
 
-export const Header = ({ siteTitle }: HeaderProps) => {
-  const pages = [
-    { name: 'Home', path: '/' },
-    { name: 'University', path: '/uni' },
-  ] as { name: string; path: string }[];
+const pages = [
+  { name: 'Home', path: '/' },
+  { name: 'University', path: '/uni' },
+] as { name: string; path: string }[];
+
+export const Header = React.memo(({ siteTitle }: HeaderProps) => {
   const [progressWidth, setProgressWidth] = useState(0);
 
-  useEffect(() => {
-    window.onscroll = () => {
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      if (isNaN(scrolled)) setProgressWidth(0);
-      else if (scrolled > 100) setProgressWidth(100);
-      else setProgressWidth(scrolled);
-    };
+  const handleScroll = useCallback(() => {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    if (isNaN(scrolled)) setProgressWidth(0);
+    else if (scrolled > 100) setProgressWidth(100);
+    else setProgressWidth(scrolled);
   }, []);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [handleScroll]);
 
   return (
     <header className="fixed top-0 w-full bg-black/75 z-50 backdrop-blur-xl text-dark-text border-b-white/20 border-b">
@@ -78,4 +85,4 @@ export const Header = ({ siteTitle }: HeaderProps) => {
       </ProgressContainer>
     </header>
   );
-};
+});
