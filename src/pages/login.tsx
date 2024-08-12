@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
 import { StyledButton } from '../components/StyledButton';
@@ -9,9 +9,13 @@ import { InputField } from '../components/InputField';
 
 const Login = () => {
   const [searchParams, setSearchParams] = useState<URLSearchParams | null>(null);
+
   useEffect(() => {
     setSearchParams(new URLSearchParams(window.location.search));
   }, []);
+
+  const errorMessage = useMemo(() => searchParams?.get('error'), [searchParams]);
+
   return (
     <Layout>
       <div
@@ -37,15 +41,11 @@ const Login = () => {
                 placeholder="Password"
                 required
               />
-              <Suspense>
-                {searchParams?.get('error') ? (
-                  <p className="bg-red-600 text-dark-text rounded-lg py-1.5 px-3">
-                    Incorrect username or password, please try again.
-                  </p>
-                ) : (
-                  ''
-                )}
-              </Suspense>
+              {errorMessage && (
+                <p className="bg-red-600 text-dark-text rounded-lg py-1.5 px-3">
+                  Incorrect username or password, please try again.
+                </p>
+              )}
               <StyledButton
                 as="button"
                 type="submit">

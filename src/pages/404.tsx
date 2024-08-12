@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
 import clsx from 'clsx';
@@ -9,9 +9,13 @@ import { Link } from 'gatsby';
 const NotFoundPage = () => {
   const [location, setLocation] = useState<WindowLocation | null>(null);
   const loc = useLocation();
+
   useEffect(() => {
     setLocation(loc);
   }, [loc]);
+
+  const locationPathname = useMemo(() => location?.pathname, [location]);
+
   return (
     <Layout>
       <div
@@ -26,9 +30,7 @@ const NotFoundPage = () => {
         </div>
         <div className="row">
           <div className="col">
-            <Suspense>
-              {location ? `The following page doesn't exists: ${location.pathname}` : ''}
-            </Suspense>
+            {locationPathname && `The following page doesn't exist: ${locationPathname}`}
           </div>
         </div>
         <div className="row">

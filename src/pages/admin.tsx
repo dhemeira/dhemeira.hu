@@ -46,47 +46,50 @@ const Admin = () => {
     const cookie = cookieValue('dates');
     if (cookie) setValues(JSON.parse(cookie));
     else fetchData();
-  }, [formattedDate, setValues]);
+  }, [setValues]);
 
-  const fetchDataPost = async (e: FormEvent) => {
-    e.preventDefault();
-    const form = e.target as HTMLFormElement;
-    const formData = new FormData(form);
-    const searchParams = new URLSearchParams();
+  const fetchDataPost = useCallback(
+    async (e: FormEvent) => {
+      e.preventDefault();
+      const form = e.target as HTMLFormElement;
+      const formData = new FormData(form);
+      const searchParams = new URLSearchParams();
 
-    formData.forEach((value, key) => {
-      searchParams.append(key, value.toString());
-    });
-
-    try {
-      const response = await fetch('/api/updateDate', {
-        method: 'POST',
-        body: searchParams,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
+      formData.forEach((value, key) => {
+        searchParams.append(key, value.toString());
       });
 
-      if (response.status === 401) {
-        navigate('/login', { replace: true });
-        return;
-      }
-
-      if (response.headers.get('Content-Type') === 'application/json') {
-        const data: AcademicCalendar = await response.json();
-
-        form.querySelectorAll('input').forEach((input) => {
-          input.value = '';
+      try {
+        const response = await fetch('/api/updateDate', {
+          method: 'POST',
+          body: searchParams,
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
         });
 
-        setValues(data);
-      } else {
-        throw new Error(response.statusText);
+        if (response.status === 401) {
+          navigate('/login', { replace: true });
+          return;
+        }
+
+        if (response.headers.get('Content-Type') === 'application/json') {
+          const data: AcademicCalendar = await response.json();
+
+          form.querySelectorAll('input').forEach((input) => {
+            input.value = '';
+          });
+
+          setValues(data);
+        } else {
+          throw new Error(response.statusText);
+        }
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
-    }
-  };
+    },
+    [setValues]
+  );
 
   return (
     <Layout>
