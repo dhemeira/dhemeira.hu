@@ -34,7 +34,7 @@ export class AcademicCalendar {
   static weekType = (type: TypeOfWeek) => {
     if (type === TypeOfWeek.StudyPeriod) return 'of study period';
     if (type === TypeOfWeek.ExamPeriod) return 'of exam period';
-    return '';
+    return 'Enjoy!';
   };
 
   static weekTitle = (date: string, calendar: AcademicCalendar, type: TypeOfWeek) => {

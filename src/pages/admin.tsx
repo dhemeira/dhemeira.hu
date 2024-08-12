@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState, useMemo, useCallback } from 'react';
 import { cookieValue } from '../utils';
 import { AcademicCalendar } from '../utils/academicCalendar';
 import { clsx } from 'clsx';
@@ -12,83 +12,80 @@ import { InputField } from '../components/InputField';
 import { StyledButton } from '../components/StyledButton';
 
 const Admin = () => {
-  const [dates, setDates] = useState(new AcademicCalendar());
-  const formattedDate = new Date().toLocaleDateString('hu-Hu');
+  const [dates, setDates] = useState<AcademicCalendar>(new AcademicCalendar());
+  const formattedDate = useMemo(() => new Date().toLocaleDateString('hu-Hu'), []);
+
+  const setValues = useCallback(
+    (data: AcademicCalendar) => {
+      setDates(data);
+
+      const expireDate = new Date(
+        formattedDate < data.semester_end_date ? data.semester_end_date : data.exam_end_date
+      );
+      expireDate.setDate(expireDate.getDate() + 1);
+      expireDate.setHours(0, 0, 1);
+
+      document.cookie = `dates=${JSON.stringify(
+        data
+      )};expires=${expireDate.toUTCString()};sameSite=Lax;path=/admin`;
+    },
+    [formattedDate]
+  );
+
   useEffect(() => {
     const fetchData = async () => {
-      await fetch('/api/date', {
-        method: 'GET',
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((data: AcademicCalendar) => {
-          setDates(data);
-
-          const expireDate = new Date(
-            formattedDate < data.semester_end_date ? data.semester_end_date : data.exam_end_date
-          );
-          expireDate.setDate(expireDate.getDate() + 1);
-          expireDate.setHours(0, 0, 1);
-
-          document.cookie = `dates=${JSON.stringify(
-            data
-          )};expires=${expireDate.toUTCString()};sameSite=Lax;path=/admin`;
-        })
-        .catch(() => {
-          console.error('Date fetch failed');
-        });
+      try {
+        const response = await fetch('/api/date', { method: 'GET' });
+        const data: AcademicCalendar = await response.json();
+        setValues(data);
+      } catch (error) {
+        console.error('Date fetch failed', error);
+      }
     };
 
     const cookie = cookieValue('dates');
-    if (cookie) setDates(JSON.parse(cookie));
+    if (cookie) setValues(JSON.parse(cookie));
     else fetchData();
-  }, [formattedDate]);
+  }, [formattedDate, setValues]);
 
   const fetchDataPost = async (e: FormEvent) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
+    const searchParams = new URLSearchParams();
 
-    // @ts-expect-error - The conversion works fine
-    const searchParams = new URLSearchParams(formData);
+    formData.forEach((value, key) => {
+      searchParams.append(key, value.toString());
+    });
 
-    await fetch('/api/updateDate', {
-      method: 'POST',
-      body: searchParams,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-    })
-      .then((response) => {
-        if (response.status === 401)
-          navigate('/login', {
-            replace: true,
-          });
-        if (response.headers.get('Content-Type') === 'application/json') return response.json();
+    try {
+      const response = await fetch('/api/updateDate', {
+        method: 'POST',
+        body: searchParams,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
 
-        throw new Error(response.statusText);
-      })
-      .then((data: AcademicCalendar) => {
-        setDates(data);
+      if (response.status === 401) {
+        navigate('/login', { replace: true });
+        return;
+      }
+
+      if (response.headers.get('Content-Type') === 'application/json') {
+        const data: AcademicCalendar = await response.json();
 
         form.querySelectorAll('input').forEach((input) => {
           input.value = '';
         });
 
-        const expireDate = new Date(
-          formattedDate < data.semester_end_date ? data.semester_end_date : data.exam_end_date
-        );
-        expireDate.setDate(expireDate.getDate() + 1);
-        expireDate.setHours(0, 0, 1);
-
-        document.cookie = `dates=${JSON.stringify(
-          data
-        )};expires=${expireDate.toUTCString()};sameSite=Lax;path=/admin`;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+        setValues(data);
+      } else {
+        throw new Error(response.statusText);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

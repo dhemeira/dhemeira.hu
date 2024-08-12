@@ -1,47 +1,42 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { cookieValue } from '../utils';
 import { AcademicCalendar, TypeOfWeek } from '../utils/academicCalendar';
 import { Card } from '../components/Card';
-import { clsx } from 'clsx';
 import React from 'react';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
-import { DateSkeleton } from '../components/DateSkeleton';
+import { UniCardSkeleton } from '../components/UniCardSkeleton';
+import { UniCardContent } from '../components/UniCardContent';
 
 const Uni = () => {
-  const [dates, setDates] = useState(new AcademicCalendar());
+  const [dates, setDates] = useState<AcademicCalendar | null>(null);
   const [type, setType] = useState(TypeOfWeek.Break);
-  const formattedDate = new Date().toLocaleDateString('hu-Hu');
+  const formattedDate = useMemo(() => new Date().toLocaleDateString('hu-Hu'), []);
 
   useEffect(() => {
-    const setValues = (dates: AcademicCalendar) => {
-      setDates(dates);
-      setType(AcademicCalendar.typeOfWeek(formattedDate, dates));
+    const setValues = (data: AcademicCalendar) => {
+      setDates(data);
+      setType(AcademicCalendar.typeOfWeek(formattedDate, data));
+
+      const expireDate = new Date(
+        formattedDate < data.semester_end_date ? data.semester_end_date : data.exam_end_date
+      );
+      expireDate.setDate(expireDate.getDate() + 1);
+      expireDate.setHours(0, 0, 1);
+
+      document.cookie = `dates=${JSON.stringify(
+        data
+      )};expires=${expireDate.toUTCString()};sameSite=Lax`;
     };
 
     const fetchData = async () => {
-      await fetch('/api/date', {
-        method: 'GET',
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((data: AcademicCalendar) => {
-          setValues(data);
-
-          const expireDate = new Date(
-            formattedDate < data.semester_end_date ? data.semester_end_date : data.exam_end_date
-          );
-          expireDate.setDate(expireDate.getDate() + 1);
-          expireDate.setHours(0, 0, 1);
-
-          document.cookie = `dates=${JSON.stringify(
-            data
-          )};expires=${expireDate.toUTCString()};sameSite=Lax`;
-        })
-        .catch(() => {
-          console.error('Date fetch failed');
-        });
+      try {
+        const response = await fetch('/api/date', { method: 'GET' });
+        const data: AcademicCalendar = await response.json();
+        setValues(data);
+      } catch (error) {
+        console.error('Date fetch failed', error);
+      }
     };
 
     const cookie = cookieValue('dates');
@@ -51,45 +46,23 @@ const Uni = () => {
 
   return (
     <Layout>
-      <div
-        className={clsx('container gap-8 md:gap-16', 'flex flex-col justify-center items-center')}>
+      <div className="container flex flex-col justify-center items-center gap-8 md:gap-16">
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter">University</h1>
         <div className="flex">
           <Card className="text-center flex flex-col justify-between items-center gap-2 px-10 md:px-14 pt-4 pb-6">
-            <>
-              <p className="text-sm">{formattedDate}</p>
-              <div className="flex flex-col justify-center items-center pb-4 text-light-text dark:text-dark-text">
-                <p className="text-5xl">{AcademicCalendar.weekEmoji(type)}</p>
-                <p className="text-4xl font-semibold leading-tight">
-                  {AcademicCalendar.weekTitle(formattedDate, dates, type)}
-                </p>
-                <p className="">{AcademicCalendar.weekType(type)}</p>
-              </div>
-
-              <div
-                className={clsx(
-                  'flex flex-col justify-center items-center gap-4',
-                  'border-t border-t-light-text/20 dark:border-t-dark-text/20',
-                  'pt-4'
-                )}>
-                <p className="inline-flex flex-col justify-center items-center">
-                  <span className="text-sm">Study period</span>
-                  <span className="inline-flex flex-row gap-1 justify-center items-center">
-                    {dates.semester_start_date || <DateSkeleton />}
-                    <span>-</span>
-                    {dates.semester_end_date || <DateSkeleton />}
-                  </span>
-                </p>
-                <p className="inline-flex flex-col justify-center items-center gap-x-1">
-                  <span className="text-sm">Exam period</span>
-                  <span className="inline-flex flex-row gap-1 justify-center items-center">
-                    {dates.exam_start_date || <DateSkeleton />}
-                    <span>-</span>
-                    {dates.exam_end_date || <DateSkeleton />}
-                  </span>
-                </p>
-              </div>
-            </>
+            {dates ? (
+              <UniCardContent
+                key="uni-card"
+                formattedDate={formattedDate}
+                type={type}
+                dates={dates}
+              />
+            ) : (
+              <UniCardSkeleton
+                key="uni-card"
+                formattedDate={formattedDate}
+              />
+            )}
           </Card>
         </div>
       </div>
