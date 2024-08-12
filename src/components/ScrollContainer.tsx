@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import {
   SiJavascript,
   SiHtml5,
@@ -17,63 +17,31 @@ import {
 } from 'react-icons/si';
 import { IconElement } from './IconElement';
 
-export const ScrollContainer = () => (
+const icons = [
+  { icon: SiJavascript, text: 'Javascript' },
+  { icon: SiHtml5, text: 'HTML' },
+  { icon: SiCss3, text: 'CSS' },
+  { icon: SiVuedotjs, text: 'Vue.js' },
+  { icon: SiReact, text: 'React' },
+  { icon: SiGatsby, text: 'Gatsby' },
+  { icon: SiTailwindcss, text: 'Tailwind CSS' },
+  { icon: SiTypescript, text: 'TypeScript' },
+  { icon: SiGit, text: 'Git' },
+  { icon: SiGithub, text: 'GitHub' },
+  { icon: SiNodedotjs, text: 'Node.js' },
+  { icon: SiNpm, text: 'NPM' },
+  { icon: SiFigma, text: 'Figma' },
+  { icon: SiAdobephotoshop, text: 'Photoshop' },
+];
+
+export const ScrollContainer = memo(() => (
   <div className={`flex flex-row gap-4 px-2 md:gap-8 md:px-4 sidescroller`}>
-    <IconElement
-      icon={SiJavascript}
-      text="Javascript"
-    />
-    <IconElement
-      icon={SiHtml5}
-      text="HTML"
-    />
-    <IconElement
-      icon={SiCss3}
-      text="CSS"
-    />
-    <IconElement
-      icon={SiVuedotjs}
-      text="Vue.js"
-    />
-    <IconElement
-      icon={SiReact}
-      text="React"
-    />
-    <IconElement
-      icon={SiGatsby}
-      text="Gatsby"
-    />
-    <IconElement
-      icon={SiTailwindcss}
-      text="Tailwind CSS"
-    />
-    <IconElement
-      icon={SiTypescript}
-      text="TypeScript"
-    />
-    <IconElement
-      icon={SiGit}
-      text="Git"
-    />
-    <IconElement
-      icon={SiGithub}
-      text="GitHub"
-    />
-    <IconElement
-      icon={SiNodedotjs}
-      text="Node.js"
-    />
-    <IconElement
-      icon={SiNpm}
-      text="NPM"
-    />
-    <IconElement
-      icon={SiFigma}
-      text="Figma"
-    />
-    <IconElement
-      icon={SiAdobephotoshop}
-      text="Photoshop"
-    />
+    {icons.map(({ icon, text }, index) => (
+      <IconElement
+        key={index}
+        icon={icon}
+        text={text}
+      />
+    ))}
   </div>
-);
+));

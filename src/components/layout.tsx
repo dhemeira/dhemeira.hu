@@ -2,14 +2,14 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { clsx } from 'clsx';
 import { Header } from './Header';
 import { Footer } from './Footer';
-import React from 'react';
+import React, { memo } from 'react';
 import { SkipToMain } from './SkipToMain';
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = memo(({ children }: LayoutProps) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -32,6 +32,6 @@ const Layout = ({ children }: LayoutProps) => {
       <Footer />
     </div>
   );
-};
+});
 
 export default Layout;

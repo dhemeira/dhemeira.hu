@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React from 'react';
+import React, { memo, useCallback } from 'react';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { Link } from 'gatsby';
 import { HamburgerLine } from './HamburgerLine';
@@ -9,12 +9,27 @@ interface DropdownMenuProps {
   className?: string;
 }
 
-const DropdownMenu = ({ pages, className }: DropdownMenuProps) => {
+interface GetPropsArgs {
+  isCurrent: boolean;
+}
+
+const menuButtonClassNames = 'w-8 h-8 flex flex-col justify-center items-center gap-1';
+const menuItemsClassNames =
+  'origin-top z-50 transition duration-200 ease-out data-[closed]:scale-75 data-[closed]:opacity-0 bg-black/75 shadow backdrop-blur-xl divide-y flex flex-col pt-8 pb-24 px-4 mt-[11px] outline-none text-center w-screen max-w-full h-[calc(100vh-50px)]';
+
+const DropdownMenu = memo(({ pages, className }: DropdownMenuProps) => {
+  const getProps = useCallback(
+    ({ isCurrent }: GetPropsArgs) => ({
+      className: `p-4 text-base/8 ${isCurrent ? 'text-dark-text font-semibold' : 'text-dark-text/70 font-medium hover:text-dark-text'}`,
+    }),
+    []
+  );
+
   return (
     <Menu>
       <MenuButton
         aria-label="Navigation Menu"
-        className={clsx('w-8 h-8', 'flex flex-col justify-center items-center gap-1', className)}>
+        className={clsx(menuButtonClassNames, className)}>
         {({ active }) => (
           <>
             <HamburgerLine className={active ? 'rotate-45 translate-y-2' : ''} />
@@ -26,25 +41,11 @@ const DropdownMenu = ({ pages, className }: DropdownMenuProps) => {
       <MenuItems
         anchor="top"
         transition
-        className={clsx(
-          'origin-top z-50',
-          'transition duration-200 ease-out',
-          'data-[closed]:scale-75 data-[closed]:opacity-0',
-          'bg-black/75 shadow backdrop-blur-xl divide-y',
-          'flex flex-col',
-          'pt-8 pb-24 px-4 mt-[11px]',
-          'outline-none text-center',
-          'w-screen max-w-full h-[calc(100vh-50px)]',
-          className
-        )}>
+        className={clsx(menuItemsClassNames, className)}>
         {pages.map((page) => (
           <MenuItem key={page.path}>
             <Link
-              getProps={({ isCurrent }) => {
-                return {
-                  className: `p-4 text-base/8 ${isCurrent ? 'text-dark-text font-semibold' : 'text-dark-text/70 font-medium hover:text-dark-text'}`,
-                };
-              }}
+              getProps={getProps}
               to={page.path || '/'}>
               {page.name}
             </Link>
@@ -53,6 +54,6 @@ const DropdownMenu = ({ pages, className }: DropdownMenuProps) => {
       </MenuItems>
     </Menu>
   );
-};
+});
 
 export default DropdownMenu;

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { createElement } from 'react';
+import React, { createElement, memo } from 'react';
 import { IconType } from 'react-icons';
 
 interface IconElementProps {
@@ -7,7 +7,7 @@ interface IconElementProps {
   text: string;
 }
 
-export const IconElement = ({ icon, text }: IconElementProps) => (
+const IconElement = memo(({ icon, text }: IconElementProps) => (
   <div
     className={clsx(
       'flex flex-row items-center justify-center py-2 divide-x-2 divide-light-text/30 dark:divide-dark-text/80',
@@ -23,4 +23,6 @@ export const IconElement = ({ icon, text }: IconElementProps) => (
       {createElement(icon, { className: 'w-6 h-6 md:w-8 md:h-8' })}
     </span>
   </div>
-);
+));
+
+export { IconElement };
