@@ -6,6 +6,7 @@ import React from 'react';
 import Seo from '../../components/seo';
 import clsx from 'clsx';
 import { Skeleton } from '../../components/Skeleton';
+import './reset.css';
 
 const Uni = () => {
   const [dates, setDates] = useState<AcademicCalendar>(new AcademicCalendar());
@@ -47,8 +48,8 @@ const Uni = () => {
   }, [fetchData, setValues]);
 
   return (
-    <div className="flex">
-      <Card className="text-center flex flex-col justify-between items-center gap-2 px-10 md:px-14 pt-4 pb-6">
+    <div className="flex bg-transparent">
+      <Card className="text-center flex flex-col justify-between items-center gap-2 px-14 pt-4 pb-6 min-w-max">
         <>
           <span className="text-sm">{formattedDate}</span>
           <div className="flex flex-col justify-center items-center gap-1 pb-4 text-light-text dark:text-dark-text">
@@ -64,7 +65,6 @@ const Uni = () => {
               <span>{AcademicCalendar.weekType(type)}</span>
             </Skeleton>
           </div>
-
           <div
             className={clsx(
               'flex flex-col justify-center items-center gap-4',
@@ -92,6 +92,7 @@ const Uni = () => {
               </Skeleton>
             </span>
           </div>
+          <div className="absolute bg-light-background dark:bg-dark-background inset-0 -z-10" />
         </>
       </Card>
     </div>

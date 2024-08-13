@@ -24,8 +24,8 @@ const spanClassNames = [
 export const Card = memo(({ children, className }: CardProps) => {
   return (
     <div className={clsx(containerClassNames, className)}>
-      <span className={spanClassNames}></span>
       {children}
+      <span className={spanClassNames}></span>
     </div>
   );
 });
