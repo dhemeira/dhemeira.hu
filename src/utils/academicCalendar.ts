@@ -2,6 +2,7 @@ export enum TypeOfWeek {
   Break,
   StudyPeriod,
   ExamPeriod,
+  Loading,
 }
 export class AcademicCalendar {
   semester_start_date: string;
@@ -10,10 +11,10 @@ export class AcademicCalendar {
   exam_end_date: string;
 
   constructor() {
-    this.semester_start_date = '';
-    this.semester_end_date = '';
-    this.exam_start_date = '';
-    this.exam_end_date = '';
+    this.semester_start_date = '0000. 00. 00.';
+    this.semester_end_date = '0000. 00. 00.';
+    this.exam_start_date = '0000. 00. 00.';
+    this.exam_end_date = '0000. 00. 00.';
   }
 
   private static getCurrentWeek = (curr: string, start: string) => {
@@ -32,12 +33,14 @@ export class AcademicCalendar {
   };
 
   static weekType = (type: TypeOfWeek) => {
+    if (type === TypeOfWeek.Loading) return 'Loading...';
     if (type === TypeOfWeek.StudyPeriod) return 'of study period';
     if (type === TypeOfWeek.ExamPeriod) return 'of exam period';
     return 'Enjoy!';
   };
 
-  static weekTitle = (date: string, calendar: AcademicCalendar, type: TypeOfWeek) => {
+  static weekTitle = (date: string, calendar: AcademicCalendar | null, type: TypeOfWeek) => {
+    if (!calendar || type === TypeOfWeek.Loading) return 'Loading';
     if (type === TypeOfWeek.StudyPeriod)
       return AcademicCalendar.getCurrentWeek(date, calendar.semester_start_date);
     if (type === TypeOfWeek.ExamPeriod)
@@ -46,6 +49,7 @@ export class AcademicCalendar {
   };
 
   static weekEmoji = (type: TypeOfWeek) => {
+    if (type === TypeOfWeek.Loading) return '⏳';
     if (type === TypeOfWeek.StudyPeriod) return '📖';
     if (type === TypeOfWeek.ExamPeriod) return '📝';
     return '🏖️';
