@@ -1,14 +1,24 @@
-import React, { memo } from 'react';
+import React from 'react';
+import clsx from 'clsx';
 
-const skeletonClassNames =
-  'h-full w-full inline-block animate-pulse bg-gray-200 rounded-full dark:bg-gray-700';
-
-export const Skeleton = memo(() => {
+function Skeleton({
+  className,
+  show = true,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement> & {
+  show?: boolean;
+}) {
+  if (!show) return props.children;
   return (
     <span
-      role="status"
-      aria-label="Loading..."
-      className={skeletonClassNames}
+      className={clsx(
+        'relative block h-6 animate-pulse rounded-xl bg-gray-200 dark:bg-gray-700',
+        props.children && 'h-auto *:invisible',
+        className
+      )}
+      {...props}
     />
   );
-});
+}
+
+export { Skeleton };
