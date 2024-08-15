@@ -1,9 +1,7 @@
 import { Link } from 'gatsby';
-import { Suspense, useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import React from 'react';
-import { lazy } from 'react';
-
-const DropdownMenu = lazy(() => import('./DropdownMenu'));
+import DropdownMenu from './DropdownMenu';
 
 interface HeaderProps {
   siteTitle: string;
@@ -72,12 +70,10 @@ export const Header = React.memo(({ siteTitle }: HeaderProps) => {
               {page.name}
             </Link>
           ))}
-          <Suspense>
-            <DropdownMenu
-              className="block sm:hidden"
-              pages={pages}
-            />
-          </Suspense>
+          <DropdownMenu
+            className="flex sm:hidden"
+            pages={pages}
+          />
         </nav>
       </div>
       <ProgressContainer>
