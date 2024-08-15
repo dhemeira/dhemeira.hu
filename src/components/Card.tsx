@@ -21,9 +21,11 @@ const spanClassNames = [
   'bg-gradient-to-r to-light-primary from-light-secondary dark:to-dark-primary dark:from-dark-secondary',
 ].join(' ');
 
-export const Card = memo(({ children, className }: CardProps) => {
+export const Card = memo(({ children, className, ...props }: CardProps) => {
   return (
-    <div className={clsx(containerClassNames, className)}>
+    <div
+      className={clsx(containerClassNames, className)}
+      {...props}>
       <span className={spanClassNames}></span>
       {children}
     </div>

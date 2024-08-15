@@ -1,8 +1,11 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import Index from './index';
 
-describe('Home', () => {
+describe('Home Page', () => {
+  afterEach(() => {
+    cleanup();
+  });
   test('displays the correct title', async () => {
     const { getAllByRole } = render(<Index />);
 
