@@ -32,17 +32,16 @@ describe('University', () => {
     expect(date.toISOString()).toBe('2024-09-08T00:00:00.000Z');
   });
 
-  test('renders correctly', async () => {
-    const { container } = render(<Uni />);
+  test('card renders correctly', async () => {
+    const { getByTestId } = render(<Uni />);
 
     // Wait for the loading text to disappear
     await waitFor(() => expect(screen.queryByText('Loading')).not.toBeInTheDocument());
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(getByTestId('uniCard')).toMatchSnapshot();
   });
 
   //Emoji     Title      Type
-  //⏳        Loading    Loading...
   //📖        Week 1     of study period
   //📝        Week 1     of exam period
   //🏖️        Break      Enjoy!
@@ -50,7 +49,7 @@ describe('University', () => {
     const mockDate = new Date('2024-09-09');
     jest.setSystemTime(mockDate);
 
-    const { getByTestId } = render(<Uni key="asd" />);
+    const { getByTestId } = render(<Uni />);
 
     // Wait for the loading text to disappear
     await waitFor(() => expect(screen.queryByText('Loading')).not.toBeInTheDocument());
@@ -63,7 +62,7 @@ describe('University', () => {
     const mockDate = new Date('2024-12-16');
     jest.setSystemTime(mockDate);
 
-    const { getByTestId } = render(<Uni key="asd" />);
+    const { getByTestId } = render(<Uni />);
 
     // Wait for the loading text to disappear
     await waitFor(() => expect(screen.queryByText('Loading')).not.toBeInTheDocument());
@@ -76,7 +75,7 @@ describe('University', () => {
     const mockDate = new Date('2025-02-09');
     jest.setSystemTime(mockDate);
 
-    const { getByTestId } = render(<Uni key="asd" />);
+    const { getByTestId } = render(<Uni />);
 
     // Wait for the loading text to disappear
     await waitFor(() => expect(screen.queryByText('Loading')).not.toBeInTheDocument());

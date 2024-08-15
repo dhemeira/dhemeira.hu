@@ -52,7 +52,9 @@ const Uni = () => {
       <div className="container flex flex-col justify-center items-center gap-8 md:gap-16">
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter">University</h1>
         <div className="flex">
-          <Card className="text-center flex flex-col justify-between items-center gap-2 px-10 md:px-14 pt-4 pb-6">
+          <Card
+            className="text-center flex flex-col justify-between items-center gap-2 px-10 md:px-14 pt-4 pb-6"
+            data-testid="uniCard">
             <>
               <span className="text-sm">{formattedDate}</span>
               <div className="flex flex-col justify-center items-center gap-1 pb-4 text-light-text dark:text-dark-text">
