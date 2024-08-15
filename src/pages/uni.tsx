@@ -57,15 +57,21 @@ const Uni = () => {
               <span className="text-sm">{formattedDate}</span>
               <div className="flex flex-col justify-center items-center gap-1 pb-4 text-light-text dark:text-dark-text">
                 <Skeleton show={type === TypeOfWeek.Loading}>
-                  <span className="text-5xl">{AcademicCalendar.weekEmoji(type)}</span>
+                  <span
+                    className="text-5xl"
+                    data-testid="weekEmoji">
+                    {AcademicCalendar.weekEmoji(type)}
+                  </span>
                 </Skeleton>
                 <Skeleton show={type === TypeOfWeek.Loading}>
-                  <span className="text-4xl font-semibold leading-none">
+                  <span
+                    className="text-4xl font-semibold leading-none"
+                    data-testid="weekTitle">
                     {AcademicCalendar.weekTitle(formattedDate, dates, type)}
                   </span>
                 </Skeleton>
                 <Skeleton show={type === TypeOfWeek.Loading}>
-                  <span>{AcademicCalendar.weekType(type)}</span>
+                  <span data-testid="weekType">{AcademicCalendar.weekType(type)}</span>
                 </Skeleton>
               </div>
 

@@ -1,0 +1,203 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`University renders correctly 1`] = `
+<div
+  class="min-h-screen flex flex-col bg-light-background dark:bg-dark-background bg-top-gradient"
+>
+  <a
+    class="fixed left-0 top-24 z-[100] p-5 pl-8 rounded-r-full bg-light-secondary/30 text-light-text text-center dark:bg-dark-secondary/30 dark:text-dark-text opacity-0 -translate-x-72 transition-all focus:opacity-100 focus:translate-x-0 focus:outline-none focus:ring dark:focus:ring-dark-accent focus:ring-light-accent"
+    href="#main"
+  >
+    Skip to main
+    <br />
+    content
+  </a>
+  <header
+    class="fixed top-0 w-full bg-black/75 z-50 backdrop-blur-xl text-dark-text border-b-white/20 border-b"
+  >
+    <div
+      class="flex justify-between px-[5%] md:px-[10%] py-2"
+    >
+      <a
+        class="font-medium px-2 text-base/8"
+        href="/"
+      >
+        dhemeira
+      </a>
+      <nav
+        class="flex gap-4 justify-end items-center"
+      >
+        <a
+          href="/"
+        >
+          Home
+        </a>
+        <a
+          href="/uni"
+        >
+          University
+        </a>
+        <button
+          aria-expanded="false"
+          aria-haspopup="menu"
+          aria-label="Navigation Menu"
+          class="w-8 h-8 flex-col justify-center items-center gap-1 flex sm:hidden"
+          data-headlessui-state=""
+          id="headlessui-menu-button-:r2:"
+          type="button"
+        >
+          <div
+            class="w-8 h-1 bg-dark-text rounded transition-transform "
+          />
+          <div
+            class="w-8 h-1 bg-dark-text rounded transition-transform "
+          />
+          <div
+            class="w-8 h-1 bg-dark-text rounded transition-transform "
+          />
+        </button>
+      </nav>
+    </div>
+    <div
+      class="w-full translate-y-px"
+    >
+      <div
+        class="h-0.5 bg-light-accent dark:bg-dark-accent"
+        style="width: 0%;"
+      />
+    </div>
+  </header>
+  <main
+    class="text-light-text dark:text-dark-text pt-24 md:pt-32 pb-12 flex-1"
+    id="main"
+  >
+    <div
+      class="container flex flex-col justify-center items-center gap-8 md:gap-16"
+    >
+      <h1
+        class="text-4xl sm:text-5xl font-bold tracking-tighter"
+      >
+        University
+      </h1>
+      <div
+        class="flex"
+      >
+        <div
+          class="bg-light-primary/5 dark:bg-dark-primary/5 from-30% bg-gradient-to-tl from-light-secondary/30 dark:from-dark-secondary/5 to-light-secondary/5 dark:to-dark-secondary/30 rounded-xl shadow border border-light-text/15 dark:border-dark-text/15 text-light-text/80 dark:text-dark-text/80 tabular-nums overflow-hidden relative text-center flex flex-col justify-between items-center gap-2 px-10 md:px-14 pt-4 pb-6"
+        >
+          <span
+            class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r to-light-primary from-light-secondary dark:to-dark-primary dark:from-dark-secondary"
+          />
+          <span
+            class="text-sm"
+          >
+            2024. 09. 08.
+          </span>
+          <div
+            class="flex flex-col justify-center items-center gap-1 pb-4 text-light-text dark:text-dark-text"
+          >
+            <span
+              class="text-5xl"
+              data-testid="weekEmoji"
+            >
+              🏖️
+            </span>
+            <span
+              class="text-4xl font-semibold leading-none"
+              data-testid="weekTitle"
+            >
+              Break
+            </span>
+            <span
+              data-testid="weekType"
+            >
+              Enjoy!
+            </span>
+          </div>
+          <div
+            class="flex flex-col justify-center items-center gap-4 border-t border-t-light-text/20 dark:border-t-dark-text/20 pt-4"
+          >
+            <span
+              class="inline-flex flex-col justify-center items-center"
+            >
+              <span
+                class="text-sm"
+              >
+                Study period
+              </span>
+              <span
+                class="inline-flex flex-row gap-1 justify-center items-center"
+              >
+                2024. 09. 09.
+                <span>
+                  -
+                </span>
+                2024. 12. 15.
+              </span>
+            </span>
+            <span
+              class="inline-flex flex-col justify-center items-center gap-x-1"
+            >
+              <span
+                class="text-sm"
+              >
+                Exam period
+              </span>
+              <span
+                class="inline-flex flex-row gap-1 justify-center items-center"
+              >
+                2024. 12. 16.
+                <span>
+                  -
+                </span>
+                2025. 02. 08.
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer
+    class="bg-black/75 w-full px-[5%] md:px-[10%] py-2 flex justify-between items-end text-dark-text border-t-white/20 border-t"
+  >
+    <span
+      class="flex flex-col"
+    >
+      <a
+        href="https://dhemeira.hu"
+      >
+        www.dhemeira.hu
+      </a>
+      <span>
+        © 2023-
+        2024
+         | Péter Lakics
+      </span>
+    </span>
+    <a
+      aria-label="GitHub"
+      class="p-1"
+      href="https://github.com/dhemeira"
+      rel="noreferrer"
+      target="_blank"
+      title="GitHub"
+    >
+      <svg
+        class="w-5 h-5"
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 16 16"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"
+        />
+      </svg>
+    </a>
+  </footer>
+</div>
+`;
