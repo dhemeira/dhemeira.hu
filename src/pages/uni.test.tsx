@@ -14,7 +14,7 @@ global.fetch = jest.fn(() =>
   })
 ) as jest.Mock;
 
-describe('University', () => {
+describe('University Page', () => {
   beforeEach(() => {
     const mockDate = new Date('2024-09-08');
     jest.useFakeTimers();
@@ -35,7 +35,6 @@ describe('University', () => {
   test('card renders correctly', async () => {
     const { getByTestId } = render(<Uni />);
 
-    // Wait for the loading text to disappear
     await waitFor(() => expect(screen.queryByText('Loading')).not.toBeInTheDocument());
 
     expect(getByTestId('uniCard')).toMatchSnapshot();
@@ -51,7 +50,6 @@ describe('University', () => {
 
     const { getByTestId } = render(<Uni />);
 
-    // Wait for the loading text to disappear
     await waitFor(() => expect(screen.queryByText('Loading')).not.toBeInTheDocument());
 
     expect(getByTestId('weekEmoji')).toHaveTextContent('📖');
@@ -64,7 +62,6 @@ describe('University', () => {
 
     const { getByTestId } = render(<Uni />);
 
-    // Wait for the loading text to disappear
     await waitFor(() => expect(screen.queryByText('Loading')).not.toBeInTheDocument());
 
     expect(getByTestId('weekEmoji')).toHaveTextContent('📝');
@@ -77,7 +74,6 @@ describe('University', () => {
 
     const { getByTestId } = render(<Uni />);
 
-    // Wait for the loading text to disappear
     await waitFor(() => expect(screen.queryByText('Loading')).not.toBeInTheDocument());
 
     expect(getByTestId('weekEmoji')).toHaveTextContent('🏖️');

@@ -1,20 +1,20 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
 import clsx from 'clsx';
-import { useLocation, WindowLocation } from '@reach/router';
+import { useLocation } from '@reach/router';
 import { StyledButton } from '../components/StyledButton';
 import { Link } from 'gatsby';
 
 const NotFoundPage = () => {
-  const [location, setLocation] = useState<WindowLocation | null>(null);
   const loc = useLocation();
+  const [locationPathname, setLocationPathname] = useState('');
 
   useEffect(() => {
-    setLocation(loc);
+    if (loc?.pathname) {
+      setLocationPathname(loc.pathname);
+    }
   }, [loc]);
-
-  const locationPathname = useMemo(() => location?.pathname, [location]);
 
   return (
     <Layout>
@@ -50,6 +50,6 @@ const NotFoundPage = () => {
   );
 };
 
-export const Head = () => <Seo title="404 Not Found" />;
+export const Head = () => <Seo title="Not Found" />;
 
 export default NotFoundPage;

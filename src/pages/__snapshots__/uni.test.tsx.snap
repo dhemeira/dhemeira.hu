@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`University card renders correctly 1`] = `
+exports[`University Page card renders correctly 1`] = `
 <div
   class="bg-light-primary/5 dark:bg-dark-primary/5 from-30% bg-gradient-to-tl from-light-secondary/30 dark:from-dark-secondary/5 to-light-secondary/5 dark:to-dark-secondary/30 rounded-xl shadow border border-light-text/15 dark:border-dark-text/15 text-light-text/80 dark:text-dark-text/80 tabular-nums overflow-hidden relative text-center flex flex-col justify-between items-center gap-2 px-10 md:px-14 pt-4 pb-6"
   data-testid="uniCard"
