@@ -23,7 +23,7 @@
     "@babel/preset-typescript": "^7.24.7",
     "@cloudflare/workers-types": "^4.20240821.1",
     "@testing-library/jest-dom": "^6.5.0",
-    "@testing-library/react": "^16.0.0",
+    "@testing-library/react": "^16.0.1",
     "@types/jest": "^29.5.12",
     "@types/node": "^22.1.0",
     "@types/react": "^18.3.4",
