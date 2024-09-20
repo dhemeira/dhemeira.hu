@@ -7,7 +7,7 @@
   "dependencies": {
     "@dhemeira/tailwind-bootstrap-grid": "^1.1.1",
     "@fontsource-variable/inter": "^5.0.20",
-    "@headlessui/react": "^2.1.3",
+    "@headlessui/react": "^2.1.7",
     "clsx": "^2.1.1",
     "gatsby": "^5.13.7",
     "gatsby-plugin-image": "^3.13.1",
