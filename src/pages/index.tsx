@@ -11,7 +11,7 @@ const IndexPage = memo(() => (
       <div className="row content-between gap-y-14">
         <div className="hidden lg:block lg:col-1"></div>
         <div className="col-12 md:col-8 lg:col-6 xl:col-5 flex flex-col items-start justify-center gap-8">
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter text-center md:text-left">
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter text-left">
             dhemeira
             <div>
               {' '}
