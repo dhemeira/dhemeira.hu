@@ -14,7 +14,7 @@ export const Footer = memo(() => {
     <footer className={footerClassNames}>
       <span className={spanClassNames}>
         <a href="https://dhemeira.hu">www.dhemeira.hu</a>
-        <span>© 2023-{currentYear} | Péter Lakics</span>
+        <span>© 2023-{currentYear} | dhemeira</span>
       </span>
       <a
         className={linkClassNames}

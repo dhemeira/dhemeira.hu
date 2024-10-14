@@ -4,8 +4,8 @@
 module.exports = {
   siteMetadata: {
     title: `dhemeira`,
-    description: `Personal website of Dhemeira (Lakics Péter). I am a CS student & front-end developer from Hungary.`,
-    author: `Lakics Péter`,
+    description: `Personal website of dhemeira. I am a CS student & front-end developer from Hungary.`,
+    author: `dhemeira`,
     siteUrl: `https://dhemeira.hu/`,
   },
   plugins: [
