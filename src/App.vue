@@ -3,7 +3,8 @@
     <div class="container flex flex-col gap-8 md:gap-16">
       <div class="row content-between gap-y-14">
         <div class="hidden lg:block lg:col-1"></div>
-        <div class="col-12 md:col-8 lg:col-6 xl:col-5 flex flex-col items-start justify-center gap-8">
+        <div
+          class="col-12 md:col-8 lg:col-6 xl:col-5 flex flex-col items-start justify-center gap-8">
           <h1 class="text-4xl sm:text-5xl font-bold tracking-tighter text-left">
             dhemeira
             <div>
@@ -11,7 +12,8 @@
               <span
                 class="bg-gradient-to-br from-dark-secondary dark:from-dark-primary dark:to-dark-accent to-light-accent text-transparent bg-clip-text inline-block">
                 front-end
-              </span>{{ ' ' }}
+              </span>
+              {{ ' ' }}
               developer
             </div>
           </h1>
@@ -50,7 +52,7 @@
 
 <script setup lang="ts">
 import ScrollAnim from './components/ScrollAnim.vue';
-import Layout from './components/Layout.vue';
+import Layout from './components/CLayout.vue';
 import './styles/Home.css';
 import ScrollContainer from './components/ScrollContainer.vue';
 </script>
