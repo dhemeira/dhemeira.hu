@@ -17,6 +17,9 @@
 
 <script setup lang="ts">
 defineProps({
-  siteTitle: String,
+  siteTitle: {
+    type: String,
+    default: 'Title',
+  },
 });
 </script>
