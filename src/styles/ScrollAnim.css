@@ -1,0 +1,33 @@
+.scroll-wheel {
+  animation: scroll 2.5s infinite cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  --down: 0.9rem;
+}
+
+@media (prefers-reduced-motion) {
+  .scroll-wheel {
+    animation: scroll 5s infinite cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  6% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  30% {
+    transform: translateY(var(--down));
+    opacity: 1;
+  }
+  40% {
+    transform: translateY(calc(var(--down) + 0.3rem));
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(calc(var(--down) + 0.3rem));
+    opacity: 0;
+  }
+}
