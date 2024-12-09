@@ -1,13 +1,5 @@
-# [dhemeira.hu](https://dhemeira.hu)
+# Vue 3 + TypeScript + Vite
 
-[![Depfu](https://badges.depfu.com/badges/c843f420dad1b6d556eb55e86603dbe1/count.svg)](https://depfu.com/github/dhemeira/dhemeira.hu?project_id=43537)
+This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-My personal website built with React, Gatsby and Tailwind.
-
-## Used sources
-
-Icons: https://react-icons.github.io/react-icons/icons/bs/
-
-Color palette: https://www.realtimecolors.com/?colors=e2e0f0-0d0a29-25f4ce-281f7a-f5a83d&fonts=Inter-Inter
-
-Animation timing function: https://animista.net/
+Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
