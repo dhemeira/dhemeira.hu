@@ -48,6 +48,7 @@
       <ScrollContainer />
     </div>
   </Layout>
+  <SeoHeader title="Home" />
 </template>
 
 <script setup lang="ts">
@@ -55,4 +56,5 @@ import ScrollAnim from './components/ScrollAnim.vue';
 import Layout from './components/CLayout.vue';
 import './styles/Home.css';
 import ScrollContainer from './components/ScrollContainer.vue';
+import SeoHeader from './components/SeoHeader.vue';
 </script>
