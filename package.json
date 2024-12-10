@@ -12,10 +12,12 @@
   "dependencies": {
     "@dhemeira/tailwind-bootstrap-grid": "^1.1.1",
     "@fontsource-variable/inter": "^5.1.0",
+    "@headlessui/vue": "^1.7.23",
     "@unhead/schema": "^1.11.14",
     "@unhead/vue": "^1.11.14",
     "unhead": "^1.11.14",
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20241112.0",
