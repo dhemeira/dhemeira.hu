@@ -1,13 +1,12 @@
 import { ScrollAnim } from '../components/ScrollAnim';
 import React, { memo } from 'react';
-import Layout from '../components/layout';
 import Seo from '../components/seo';
 import '../styles/Home.css';
 import { ScrollContainer } from '../components/ScrollContainer';
 
 const IndexPage = memo(() => {
   return (
-    <Layout>
+    <>
       <div className="container flex flex-col gap-8 md:gap-16">
         <div className="row content-between gap-y-14">
           <div className="hidden lg:block lg:col-1"></div>
@@ -52,7 +51,7 @@ const IndexPage = memo(() => {
         <ScrollContainer />
         <ScrollContainer />
       </div>
-    </Layout>
+    </>
   );
 });
 
