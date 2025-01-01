@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Layout from '../components/layout';
 import Seo from '../components/seo';
 import clsx from 'clsx';
 import { useLocation } from '@reach/router';
@@ -17,36 +16,31 @@ const NotFoundPage = () => {
   }, [loc]);
 
   return (
-    <Layout>
-      <div
-        className={clsx(
-          'container text-center',
-          'flex flex-col justify-center items-center gap-8'
-        )}>
-        <div className="row">
-          <div className="col">
-            <h1 className="text-5xl sm:text-[6rem] font-bold tracking-tighter">404</h1>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col">
-            {locationPathname && `The following page doesn't exist: ${locationPathname}`}
-          </div>
-        </div>
-        <div className="row">
-          <div className="col">Check out the home page to find what you are looking for</div>
-        </div>
-        <div className="row">
-          <div className="col">
-            <StyledButton
-              as={Link}
-              to="/">
-              Back to home
-            </StyledButton>
-          </div>
+    <div
+      className={clsx('container text-center', 'flex flex-col justify-center items-center gap-8')}>
+      <div className="row">
+        <div className="col">
+          <h1 className="text-5xl sm:text-[6rem] font-bold tracking-tighter">404</h1>
         </div>
       </div>
-    </Layout>
+      <div className="row">
+        <div className="col">
+          {locationPathname && `The following page doesn't exist: ${locationPathname}`}
+        </div>
+      </div>
+      <div className="row">
+        <div className="col">Check out the home page to find what you are looking for</div>
+      </div>
+      <div className="row">
+        <div className="col">
+          <StyledButton
+            as={Link}
+            to="/">
+            Back to home
+          </StyledButton>
+        </div>
+      </div>
+    </div>
   );
 };
 

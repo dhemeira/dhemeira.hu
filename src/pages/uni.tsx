@@ -3,7 +3,6 @@ import { cookieValue } from '../utils';
 import { AcademicCalendar, TypeOfWeek } from '../utils/academicCalendar';
 import { Card } from '../components/Card';
 import React from 'react';
-import Layout from '../components/layout';
 import Seo from '../components/seo';
 import clsx from 'clsx';
 import { Skeleton } from '../components/Skeleton';
@@ -48,67 +47,65 @@ const Uni = () => {
   }, [fetchData, setValues]);
 
   return (
-    <Layout>
-      <div className="container flex flex-col justify-center items-center gap-8 md:gap-16">
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter">University</h1>
-        <div className="flex">
-          <Card
-            className="text-center flex flex-col justify-between items-center gap-2 px-10 md:px-14 pt-4 pb-6"
-            data-testid="uniCard">
-            <>
-              <span className="text-sm">{formattedDate}</span>
-              <div className="flex flex-col justify-center items-center gap-1 pb-4 text-light-text dark:text-dark-text">
-                <Skeleton show={type === TypeOfWeek.Loading}>
-                  <span
-                    className="text-5xl"
-                    data-testid="weekEmoji">
-                    {AcademicCalendar.weekEmoji(type)}
-                  </span>
-                </Skeleton>
-                <Skeleton show={type === TypeOfWeek.Loading}>
-                  <span
-                    className="text-4xl font-semibold leading-none"
-                    data-testid="weekTitle">
-                    {AcademicCalendar.weekTitle(formattedDate, dates, type)}
-                  </span>
-                </Skeleton>
-                <Skeleton show={type === TypeOfWeek.Loading}>
-                  <span data-testid="weekType">{AcademicCalendar.weekType(type)}</span>
-                </Skeleton>
-              </div>
+    <div className="container flex flex-col justify-center items-center gap-8 md:gap-16">
+      <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter">University</h1>
+      <div className="flex">
+        <Card
+          className="text-center flex flex-col justify-between items-center gap-2 px-10 md:px-14 pt-4 pb-6"
+          data-testid="uniCard">
+          <>
+            <span className="text-sm">{formattedDate}</span>
+            <div className="flex flex-col justify-center items-center gap-1 pb-4 text-light-text dark:text-dark-text">
+              <Skeleton show={type === TypeOfWeek.Loading}>
+                <span
+                  className="text-5xl"
+                  data-testid="weekEmoji">
+                  {AcademicCalendar.weekEmoji(type)}
+                </span>
+              </Skeleton>
+              <Skeleton show={type === TypeOfWeek.Loading}>
+                <span
+                  className="text-4xl font-semibold leading-none"
+                  data-testid="weekTitle">
+                  {AcademicCalendar.weekTitle(formattedDate, dates, type)}
+                </span>
+              </Skeleton>
+              <Skeleton show={type === TypeOfWeek.Loading}>
+                <span data-testid="weekType">{AcademicCalendar.weekType(type)}</span>
+              </Skeleton>
+            </div>
 
-              <div
-                className={clsx(
-                  'flex flex-col justify-center items-center gap-4',
-                  'border-t border-t-light-text/20 dark:border-t-dark-text/20',
-                  'pt-4'
-                )}>
-                <span className="inline-flex flex-col justify-center items-center">
-                  <span className="text-sm">Study period</span>
-                  <Skeleton show={type === TypeOfWeek.Loading}>
-                    <span className="inline-flex flex-row gap-1 justify-center items-center">
-                      {dates?.semester_start_date}
-                      <span>-</span>
-                      {dates?.semester_end_date}
-                    </span>
-                  </Skeleton>
-                </span>
-                <span className="inline-flex flex-col justify-center items-center gap-x-1">
-                  <span className="text-sm">Exam period</span>
-                  <Skeleton show={type === TypeOfWeek.Loading}>
-                    <span className="inline-flex flex-row gap-1 justify-center items-center">
-                      {dates?.exam_start_date}
-                      <span>-</span>
-                      {dates?.exam_end_date}
-                    </span>
-                  </Skeleton>
-                </span>
-              </div>
-            </>
-          </Card>
-        </div>
+            <div
+              className={clsx(
+                'flex flex-col justify-center items-center gap-4',
+                'border-t border-t-light-text/20 dark:border-t-dark-text/20',
+                'pt-4'
+              )}>
+              <span className="inline-flex flex-col justify-center items-center">
+                <span className="text-sm">Study period</span>
+                <Skeleton show={type === TypeOfWeek.Loading}>
+                  <span className="inline-flex flex-row gap-1 justify-center items-center">
+                    {dates?.semester_start_date}
+                    <span>-</span>
+                    {dates?.semester_end_date}
+                  </span>
+                </Skeleton>
+              </span>
+              <span className="inline-flex flex-col justify-center items-center gap-x-1">
+                <span className="text-sm">Exam period</span>
+                <Skeleton show={type === TypeOfWeek.Loading}>
+                  <span className="inline-flex flex-row gap-1 justify-center items-center">
+                    {dates?.exam_start_date}
+                    <span>-</span>
+                    {dates?.exam_end_date}
+                  </span>
+                </Skeleton>
+              </span>
+            </div>
+          </>
+        </Card>
       </div>
-    </Layout>
+    </div>
   );
 };
 
