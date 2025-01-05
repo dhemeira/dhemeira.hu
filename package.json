@@ -6,7 +6,7 @@
   "author": "dhemeira",
   "dependencies": {
     "@dhemeira/tailwind-bootstrap-grid": "^1.1.1",
-    "@fontsource-variable/inter": "^5.1.0",
+    "@fontsource-variable/inter": "^5.1.1",
     "@headlessui/react": "^2.2.0",
     "clsx": "^2.1.1",
     "gatsby": "^5.14.1",
