@@ -20,7 +20,7 @@ export const onRequest = async (context: {
     const res = await dates.json();
     for (const [key, value] of formData.entries()) {
       if (value !== '' && regex.test(value)) {
-        env.data.put(key, value);
+        await env.data.put(key, value);
         res[key] = value;
       }
     }
